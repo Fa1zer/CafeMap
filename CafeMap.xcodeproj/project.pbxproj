@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E36355E52822CF1B00A14C82 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E42822CF1B00A14C82 /* LogInViewModel.swift */; };
+		E36355E72822CF2700A14C82 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E62822CF2700A14C82 /* LogInModel.swift */; };
 		E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5628227934005E14A7 /* CafeMapApp.swift */; };
 		E38F0F5928227934005E14A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5828227934005E14A7 /* ContentView.swift */; };
 		E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38F0F5A28227939005E14A7 /* Assets.xcassets */; };
@@ -14,6 +16,10 @@
 		E38F0F6828227939005E14A7 /* CafeMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F6728227939005E14A7 /* CafeMapTests.swift */; };
 		E38F0F7228227939005E14A7 /* CafeMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F7128227939005E14A7 /* CafeMapUITests.swift */; };
 		E38F0F7428227939005E14A7 /* CafeMapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F7328227939005E14A7 /* CafeMapUITestsLaunchTests.swift */; };
+		E38F0F8528228028005E14A7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E38F0F8428228028005E14A7 /* FirebaseAnalytics */; };
+		E38F0F8728228029005E14A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E38F0F8628228029005E14A7 /* FirebaseAuth */; };
+		E38F0F8928228029005E14A7 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */; };
+		E38F0F8B282280D4005E14A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E38F0F8A282280D4005E14A7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E36355E42822CF1B00A14C82 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		E36355E62822CF2700A14C82 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		E38F0F5328227934005E14A7 /* CafeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F0F5628227934005E14A7 /* CafeMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapApp.swift; sourceTree = "<group>"; };
 		E38F0F5828227934005E14A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +52,7 @@
 		E38F0F6D28227939005E14A7 /* CafeMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CafeMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F0F7128227939005E14A7 /* CafeMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapUITests.swift; sourceTree = "<group>"; };
 		E38F0F7328227939005E14A7 /* CafeMapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E38F0F8A282280D4005E14A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38F0F8528228028005E14A7 /* FirebaseAnalytics in Frameworks */,
+				E38F0F8928228029005E14A7 /* FirebaseAuthCombine-Community in Frameworks */,
+				E38F0F8728228029005E14A7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E36355E32822CE4200A14C82 /* LogInModule */ = {
+			isa = PBXGroup;
+			children = (
+				E38F0F5828227934005E14A7 /* ContentView.swift */,
+				E36355E42822CF1B00A14C82 /* LogInViewModel.swift */,
+				E36355E62822CF2700A14C82 /* LogInModel.swift */,
+			);
+			path = LogInModule;
+			sourceTree = "<group>";
+		};
 		E38F0F4A28227933005E14A7 = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +116,8 @@
 		E38F0F5528227934005E14A7 /* CafeMap */ = {
 			isa = PBXGroup;
 			children = (
-				E38F0F5628227934005E14A7 /* CafeMapApp.swift */,
-				E38F0F5828227934005E14A7 /* ContentView.swift */,
-				E38F0F5A28227939005E14A7 /* Assets.xcassets */,
+				E36355E32822CE4200A14C82 /* LogInModule */,
+				E38F0F8028227995005E14A7 /* SupportingFiles */,
 				E38F0F5C28227939005E14A7 /* Preview Content */,
 			);
 			path = CafeMap;
@@ -127,6 +148,16 @@
 			path = CafeMapUITests;
 			sourceTree = "<group>";
 		};
+		E38F0F8028227995005E14A7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E38F0F8A282280D4005E14A7 /* GoogleService-Info.plist */,
+				E38F0F5628227934005E14A7 /* CafeMapApp.swift */,
+				E38F0F5A28227939005E14A7 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +174,11 @@
 			dependencies = (
 			);
 			name = CafeMap;
+			packageProductDependencies = (
+				E38F0F8428228028005E14A7 /* FirebaseAnalytics */,
+				E38F0F8628228029005E14A7 /* FirebaseAuth */,
+				E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */,
+			);
 			productName = CafeMap;
 			productReference = E38F0F5328227934005E14A7 /* CafeMap.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +251,9 @@
 				Base,
 			);
 			mainGroup = E38F0F4A28227933005E14A7;
+			packageReferences = (
+				E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E38F0F5428227934005E14A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38F0F5E28227939005E14A7 /* Preview Assets.xcassets in Resources */,
+				E38F0F8B282280D4005E14A7 /* GoogleService-Info.plist in Resources */,
 				E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +298,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38F0F5928227934005E14A7 /* ContentView.swift in Sources */,
+				E36355E72822CF2700A14C82 /* LogInModel.swift in Sources */,
+				E36355E52822CF1B00A14C82 /* LogInViewModel.swift in Sources */,
 				E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +619,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E38F0F8428228028005E14A7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E38F0F8628228029005E14A7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E38F0F4B28227933005E14A7 /* Project object */;
 }
