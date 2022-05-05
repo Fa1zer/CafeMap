@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3177EBB282452B5009D4BEE /* CafeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBA282452B5009D4BEE /* CafeMapView.swift */; };
+		E3177EBD282452D2009D4BEE /* CafeMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */; };
+		E3177EBF282452E1009D4BEE /* CafeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBE282452E1009D4BEE /* CafeMapModel.swift */; };
 		E36355E52822CF1B00A14C82 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E42822CF1B00A14C82 /* LogInViewModel.swift */; };
 		E36355E72822CF2700A14C82 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E62822CF2700A14C82 /* LogInModel.swift */; };
+		E375CC0E282408E100186418 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E375CC10282408E100186418 /* Localizable.strings */; };
+		E375CC1528240D4300186418 /* LogInSignInErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E375CC1428240D4300186418 /* LogInSignInErrors.swift */; };
 		E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5628227934005E14A7 /* CafeMapApp.swift */; };
 		E38F0F5928227934005E14A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5828227934005E14A7 /* ContentView.swift */; };
 		E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38F0F5A28227939005E14A7 /* Assets.xcassets */; };
@@ -40,8 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E3177EBA282452B5009D4BEE /* CafeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapView.swift; sourceTree = "<group>"; };
+		E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapViewModel.swift; sourceTree = "<group>"; };
+		E3177EBE282452E1009D4BEE /* CafeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapModel.swift; sourceTree = "<group>"; };
 		E36355E42822CF1B00A14C82 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		E36355E62822CF2700A14C82 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
+		E375CC0F282408E100186418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E375CC11282408F700186418 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E375CC1428240D4300186418 /* LogInSignInErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignInErrors.swift; sourceTree = "<group>"; };
 		E38F0F5328227934005E14A7 /* CafeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F0F5628227934005E14A7 /* CafeMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapApp.swift; sourceTree = "<group>"; };
 		E38F0F5828227934005E14A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,14 +94,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E3177EB928245285009D4BEE /* CafeMapModule */ = {
+			isa = PBXGroup;
+			children = (
+				E3177EBA282452B5009D4BEE /* CafeMapView.swift */,
+				E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */,
+				E3177EBE282452E1009D4BEE /* CafeMapModel.swift */,
+			);
+			path = CafeMapModule;
+			sourceTree = "<group>";
+		};
 		E36355E32822CE4200A14C82 /* LogInModule */ = {
 			isa = PBXGroup;
 			children = (
 				E38F0F5828227934005E14A7 /* ContentView.swift */,
 				E36355E42822CF1B00A14C82 /* LogInViewModel.swift */,
 				E36355E62822CF2700A14C82 /* LogInModel.swift */,
+				E375CC1428240D4300186418 /* LogInSignInErrors.swift */,
 			);
 			path = LogInModule;
+			sourceTree = "<group>";
+		};
+		E375CC0B2824088100186418 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E375CC10282408E100186418 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		E38F0F4A28227933005E14A7 = {
@@ -116,6 +146,8 @@
 		E38F0F5528227934005E14A7 /* CafeMap */ = {
 			isa = PBXGroup;
 			children = (
+				E375CC0B2824088100186418 /* Localization */,
+				E3177EB928245285009D4BEE /* CafeMapModule */,
 				E36355E32822CE4200A14C82 /* LogInModule */,
 				E38F0F8028227995005E14A7 /* SupportingFiles */,
 				E38F0F5C28227939005E14A7 /* Preview Content */,
@@ -249,6 +281,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E38F0F4A28227933005E14A7;
 			packageReferences = (
@@ -271,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38F0F5E28227939005E14A7 /* Preview Assets.xcassets in Resources */,
+				E375CC0E282408E100186418 /* Localizable.strings in Resources */,
 				E38F0F8B282280D4005E14A7 /* GoogleService-Info.plist in Resources */,
 				E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */,
 			);
@@ -300,7 +334,11 @@
 				E38F0F5928227934005E14A7 /* ContentView.swift in Sources */,
 				E36355E72822CF2700A14C82 /* LogInModel.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* LogInViewModel.swift in Sources */,
+				E3177EBF282452E1009D4BEE /* CafeMapModel.swift in Sources */,
 				E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */,
+				E3177EBB282452B5009D4BEE /* CafeMapView.swift in Sources */,
+				E375CC1528240D4300186418 /* LogInSignInErrors.swift in Sources */,
+				E3177EBD282452D2009D4BEE /* CafeMapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,11 +374,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		E375CC10282408E100186418 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E375CC0F282408E100186418 /* en */,
+				E375CC11282408F700186418 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		E38F0F7528227939005E14A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -401,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

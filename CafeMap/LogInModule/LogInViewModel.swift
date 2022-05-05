@@ -15,7 +15,13 @@ final class LogInViewModel: ObservableObject {
     
     private let logInModel = LogInModel()
     
-    func logIn(didComplete: @escaping () -> Void, didNotComplete: @escaping () -> Void) {
+    func logIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
+        if password.count < 6 {
+            didNotComplete(.passwordFieldIsSmall)
+            
+            return
+        }
+        
         self.logInModel.logIn(
             email: self.email,
             passsword: self.password,
@@ -24,7 +30,13 @@ final class LogInViewModel: ObservableObject {
         )
     }
     
-    func signIn(didComplete: @escaping () -> Void, didNotComplete: @escaping () -> Void) {
+    func signIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (SignInErrors) -> Void) {
+        if password.count < 6 {
+            didNotComplete(.passwordFieldIsSmall)
+            
+            return
+        }
+        
         self.logInModel.signIn(
             email: self.email,
             passsword: self.password,

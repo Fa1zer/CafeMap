@@ -9,20 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private enum CompletionStatus {
-        case sucsesed, unsucsesed
-    }
-    
     @ObservedObject private var viewModel: LogInViewModel
-    
-    @State private var signInCompletionStatus = false
-    @State private var logInCompletionStatus = false
-    @State private var completionStatus: CompletionStatus?
-
     
     init(viewModel: LogInViewModel) {
         self.viewModel = viewModel
     }
+    
+    @State private var signInCompletionStatus = false
+    @State private var logInCompletionStatus = false
+    @State private var logInError: LogInErrors?
+    @State private var signInError: SignInErrors?
     
     var body: some View {
         NavigationView {
@@ -41,7 +37,7 @@ struct ContentView: View {
                             .padding()
                             .frame(height: 50)
                             .background(Color(uiColor: .systemGray6))
-                        SecureField("Password", text: $viewModel.password)
+                        SecureField(NSLocalizedString("Password", comment: ""), text: $viewModel.password)
                             .padding()
                             .frame(height: 50)
                             .background(Color(uiColor: .systemGray6))
@@ -55,15 +51,13 @@ struct ContentView: View {
                     
                     Button {
                         self.viewModel.logIn {
-                            self.completionStatus = .sucsesed
+                            print(#function)
+                        } didNotComplete: { error in
                             self.logInCompletionStatus = true
-                        } didNotComplete: {
-                            self.completionStatus = .unsucsesed
-                            self.logInCompletionStatus = true
+                            self.logInError = error
                         }
-
                     } label: {
-                        Text("Log In")
+                        Text(NSLocalizedString("Log In", comment: ""))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .frame(height: 50)
                             .background(.green)
@@ -73,33 +67,41 @@ struct ContentView: View {
                     .padding([.leading, .trailing], 15)
                     .cornerRadius(10)
                     .alert(isPresented: $logInCompletionStatus) {
-                        if self.completionStatus == .sucsesed {
-                            return Alert(title: Text("Loged In"), message: nil, dismissButton: .cancel(Text("OK")))
+                        var title = ""
+                        
+                        if self.logInError == .passwordFieldIsSmall {
+                            title = "Too short a password"
+                        } else  {
+                            title = "Unable to register"
                         }
-                        return Alert(title: Text("Error"), message: nil, dismissButton: .cancel(Text("OK")))
+                        
+                        return Alert(title: Text(NSLocalizedString(title, comment: "")), message: nil, dismissButton: .cancel(Text("OK")))
                     }
                     
                     Button {
                         self.viewModel.signIn {
-                            self.completionStatus = .sucsesed
+                            print(#function)
+                        } didNotComplete: { error in
                             self.signInCompletionStatus = true
-                        } didNotComplete: {
-                            self.completionStatus = .unsucsesed
-                            self.signInCompletionStatus = true
+                            self.signInError = error
                         }
-
                     } label: {
-                        Text("Sign In")
+                        Text(NSLocalizedString("Sign In", comment: ""))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .frame(height: 50)
                             .foregroundColor(.black)
                     }
                     .padding([.leading, .trailing], 15)
                     .alert(isPresented: $signInCompletionStatus) {
-                        if self.completionStatus == .sucsesed {
-                            return Alert(title: Text("Signed In"), message: nil, dismissButton: .cancel(Text("OK")))
+                        var title = ""
+                        
+                        if self.signInError == .passwordFieldIsSmall {
+                            title = "Too short a password"
+                        } else  {
+                            title = "User isn't registered"
                         }
-                        return Alert(title: Text("User isn't registered"), message: nil, dismissButton: .cancel(Text("OK")))
+                        
+                        return Alert(title: Text(NSLocalizedString(title, comment: "")), message: nil, dismissButton: .cancel(Text("OK")))
                     }
                     
                     Spacer()

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  CafeMap
+
+  Created by Artemiy Zuzin on 05.05.2022.
+  
+*/
+
+"Log In" = "Log In";
+"Sign In" = "Sign In";
+"User isn't registered" = "User isn't registered";
+"Unable to register" = "Unable to register";
+"Password" = "Password";
+"Too short a password" = "Too short a password";
