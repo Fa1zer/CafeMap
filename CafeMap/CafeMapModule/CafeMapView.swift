@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CafeMapView: View {
     
-//    @ObservedObject private var viewModel: CafeMapViewModel
-//
-//    init(viewModel: CafeMapViewModel) {
-//        self.viewModel = viewModel
-//    }
+    @ObservedObject private var viewModel: CafeMapViewModel
+    
+    init(viewModel: CafeMapViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -23,6 +23,6 @@ struct CafeMapView: View {
 
 struct CafeMapView_Previews: PreviewProvider {
     static var previews: some View {
-        CafeMapView(/*model: CafeMapViewModel()*/)
+        CafeMapView(viewModel: CafeMapViewModel())
     }
 }

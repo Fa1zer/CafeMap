@@ -8,12 +8,14 @@
 import Foundation
 import Combine
 
-final class LogInViewModel: ObservableObject {
+final class RegistrationViewModel: ObservableObject, Coordinatable {
+    
+    var coordinator: NavigationCoordinator?
     
     @Published var password = ""
     @Published var email = ""
     
-    private let logInModel = LogInModel()
+    private let logInModel = RegistrationModel()
     
     func logIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         if password.count < 6 {
@@ -43,6 +45,10 @@ final class LogInViewModel: ObservableObject {
             didComplete: didComplete,
             didNotComplete: didNotComplete
         )
+    }
+    
+    func goToCafeMap() -> CafeMapView {
+        return self.coordinator?.goToCafeMap() ?? CafeMapView(viewModel: CafeMapViewModel())
     }
     
 }

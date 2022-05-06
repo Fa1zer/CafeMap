@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import FirebaseAuth
 
-final class LogInModel {
+final class RegistrationModel {
     
     func logIn(email: String, passsword: String, didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: passsword) { result, error in

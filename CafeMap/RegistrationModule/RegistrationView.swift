@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RegistrationView: View {
     
-    @ObservedObject private var viewModel: LogInViewModel
+    @ObservedObject private var viewModel: RegistrationViewModel
     
-    init(viewModel: LogInViewModel) {
+    init(viewModel: RegistrationViewModel) {
         self.viewModel = viewModel
     }
     
@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var logInCompletionStatus = false
     @State private var logInError: LogInErrors?
     @State private var signInError: SignInErrors?
+    @State private var cafeMapViewIsPresented = false
     
     var body: some View {
         NavigationView {
@@ -51,7 +52,7 @@ struct ContentView: View {
                     
                     Button {
                         self.viewModel.logIn {
-                            print(#function)
+                            self.cafeMapViewIsPresented = true
                         } didNotComplete: { error in
                             self.logInCompletionStatus = true
                             self.logInError = error
@@ -80,7 +81,7 @@ struct ContentView: View {
                     
                     Button {
                         self.viewModel.signIn {
-                            print(#function)
+                            self.cafeMapViewIsPresented = true
                         } didNotComplete: { error in
                             self.signInCompletionStatus = true
                             self.signInError = error
@@ -105,6 +106,11 @@ struct ContentView: View {
                     }
                     
                     Spacer()
+                    
+                    NavigationLink("",
+                                   destination: self.viewModel.goToCafeMap(),
+                                   isActive: $cafeMapViewIsPresented)
+                        .hidden()
                 }
                 .frame(height: 700)
             }
@@ -116,6 +122,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: LogInViewModel())
+        RegistrationView(viewModel: RegistrationViewModel())
     }
 }
