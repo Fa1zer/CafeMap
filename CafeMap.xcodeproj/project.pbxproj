@@ -26,6 +26,8 @@
 		E38F0F8728228029005E14A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E38F0F8628228029005E14A7 /* FirebaseAuth */; };
 		E38F0F8928228029005E14A7 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */; };
 		E38F0F8B282280D4005E14A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E38F0F8A282280D4005E14A7 /* GoogleService-Info.plist */; };
+		E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD434828253A2600B9E1A3 /* LocationManager.swift */; };
+		E3C485262826F89400E53D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3C485282826F89400E53D51 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,9 @@
 		E38F0F7128227939005E14A7 /* CafeMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapUITests.swift; sourceTree = "<group>"; };
 		E38F0F7328227939005E14A7 /* CafeMapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E38F0F8A282280D4005E14A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3BD434828253A2600B9E1A3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E3C485272826F89400E53D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E3C485292826F89600E53D51 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				E375CC10282408E100186418 /* Localizable.strings */,
+				E3C485282826F89400E53D51 /* InfoPlist.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				E375CC0B2824088100186418 /* Localization */,
+				E3BD434A28253A3300B9E1A3 /* Location */,
 				E31BCFBB28252AC800340CF5 /* Navigation */,
 				E3177EB928245285009D4BEE /* CafeMapModule */,
 				E36355E32822CE4200A14C82 /* RegistrationModule */,
@@ -199,6 +206,14 @@
 				E38F0F5A28227939005E14A7 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E3BD434A28253A3300B9E1A3 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				E3BD434828253A2600B9E1A3 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +333,7 @@
 				E375CC0E282408E100186418 /* Localizable.strings in Resources */,
 				E38F0F8B282280D4005E14A7 /* GoogleService-Info.plist in Resources */,
 				E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */,
+				E3C485262826F89400E53D51 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +360,7 @@
 			files = (
 				E38F0F5928227934005E14A7 /* RegistrationView.swift in Sources */,
 				E36355E72822CF2700A14C82 /* RegistrationModel.swift in Sources */,
+				E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */,
 				E3177EBF282452E1009D4BEE /* CafeMapModel.swift in Sources */,
 				E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */,
@@ -394,6 +411,15 @@
 				E375CC11282408F700186418 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E3C485282826F89400E53D51 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3C485272826F89400E53D51 /* en */,
+				E3C485292826F89600E53D51 /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -525,6 +551,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CafeMap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -553,6 +580,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CafeMap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
