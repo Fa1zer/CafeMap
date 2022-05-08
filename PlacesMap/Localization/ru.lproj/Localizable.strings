@@ -13,3 +13,5 @@
 "Password" = "Пароль";
 "Too short a password" = "Слишком короткий пароль";
 "Map" = "Карта";
+"Description" = "Описание";
+"Information" = "Информация";

@@ -35,4 +35,13 @@ final class NavigationCoordinator {
         return view
     }
     
+    func goToPlaceInformation() -> PlaceInformationView {
+        let viewModel = PlaceInformationViewModel()
+        let view = PlaceInformationView(viewModel: viewModel)
+        
+        viewModel.coordinator = self
+        
+        return view
+    }
+    
 }

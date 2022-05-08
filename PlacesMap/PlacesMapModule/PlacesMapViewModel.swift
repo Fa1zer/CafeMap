@@ -28,8 +28,8 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         self.model.getUserLocation()
     }
     
-    func goToRegistration() -> RegistrationView {
-        return self.coordinator?.goToRegistration() ?? RegistrationView(viewModel: RegistrationViewModel())
+    func goToPlaceInformation() -> PlaceInformationView {
+        return self.coordinator?.goToPlaceInformation() ?? PlaceInformationView(viewModel: PlaceInformationViewModel())
     }
     
 }

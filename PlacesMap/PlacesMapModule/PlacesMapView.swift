@@ -18,53 +18,51 @@ struct PlacesMapView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Map(
-                    coordinateRegion: self.$viewModel.coordinateRegion,
-                    interactionModes: .all,
-                    showsUserLocation: true,
-                    userTrackingMode: self.$mapUserTrackingMode
-                )
-                .onAppear() {
-                    self.viewModel.getUserLocation()
+        VStack {
+            Map(
+                coordinateRegion: self.$viewModel.coordinateRegion,
+                interactionModes: .all,
+                showsUserLocation: true,
+                userTrackingMode: self.$mapUserTrackingMode
+            )
+            .onAppear() {
+                self.viewModel.getUserLocation()
+            }
+            
+            HStack(alignment: .center, spacing: 15) {
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(.gray, lineWidth: 5))
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Some Title")
+                        .font(.title)
+                        .foregroundColor(.black)
+                    
+                    Text("Some street")
+                        .font(.headline)
+                        .foregroundColor(.gray)
                 }
                 
-                HStack(alignment: .center, spacing: 15) {
-                    Image("logo")
+                Spacer()
+                
+                NavigationLink {
+                    self.viewModel.goToPlaceInformation()
+                } label: {
+                    Image(uiImage: UIImage(systemName: "info.circle") ?? UIImage())
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(.gray, lineWidth: 5))
-                    
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("Some Title")
-                            .font(.title)
-                            .foregroundColor(.black)
-                        
-                        Text("Some street")
-                            .font(.headline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer()
-                    
-                    NavigationLink {
-                        self.viewModel.goToRegistration()
-                    } label: {
-                        Image(uiImage: UIImage(systemName: "info.circle") ?? UIImage())
-                            .resizable()
-                            .renderingMode(.template)
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.blue)
-                    }
+                        .renderingMode(.template)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.blue)
                 }
-                .padding([.leading, .trailing], 20)
             }
-            .navigationBarTitle(NSLocalizedString("Map", comment: ""))
+            .padding([.leading, .trailing], 20)
         }
-        .navigationBarHidden(true)
+        .navigationBarTitle(NSLocalizedString("Map", comment: ""))
+        .navigationBarBackButtonHidden(true)
     }
     
 }
