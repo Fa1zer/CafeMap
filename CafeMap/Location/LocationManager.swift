@@ -16,8 +16,6 @@ final class LocationManager: NSObject, ObservableObject {
         
         self.manager.delegate = self
         self.manager.desiredAccuracy = kCLLocationAccuracyBest
-        self.manager.requestWhenInUseAuthorization()
-        self.manager.startUpdatingLocation()
     }
         
     static let shared = LocationManager()
@@ -25,6 +23,11 @@ final class LocationManager: NSObject, ObservableObject {
     @Published var coodinateRegion = MKCoordinateRegion()
     
     private let manager = CLLocationManager()
+    
+    func getUserLocation() {
+        self.manager.requestWhenInUseAuthorization()
+        self.manager.startUpdatingLocation()
+    }
     
 }
 

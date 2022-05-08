@@ -10,7 +10,7 @@ import CoreLocation
 import Combine
 import MapKit
 
-final class CafeMapModel: ObservableObject {
+final class PlacesMapModel: ObservableObject {
     
     init() {
         self.locationManager.$coodinateRegion
@@ -21,7 +21,10 @@ final class CafeMapModel: ObservableObject {
     @Published var coordinateRegion = MKCoordinateRegion()
     
     private var subscriptions: Set<AnyCancellable> = []
-    
     private let locationManager = LocationManager.shared
+    
+    func getUserLocation() {
+        self.locationManager.getUserLocation()
+    }
     
 }

@@ -47,8 +47,8 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
         )
     }
     
-    func goToCafeMap() -> CafeMapView {
-        return self.coordinator?.goToCafeMap() ?? CafeMapView(viewModel: CafeMapViewModel())
+    func goToCafeMap() -> PlacesMapView {
+        return self.coordinator?.goToCafeMap() ?? PlacesMapView(viewModel: PlacesMapViewModel())
     }
     
 }

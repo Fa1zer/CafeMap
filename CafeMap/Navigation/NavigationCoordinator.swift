@@ -17,9 +17,9 @@ final class NavigationCoordinator {
         return self.goToRegistration()
     }
     
-    func goToCafeMap() -> CafeMapView {
-        let viewModel = CafeMapViewModel()
-        let view = CafeMapView(viewModel: viewModel)
+    func goToCafeMap() -> PlacesMapView {
+        let viewModel = PlacesMapViewModel()
+        let view = PlacesMapView(viewModel: viewModel)
                 
         viewModel.coordinator = self
         

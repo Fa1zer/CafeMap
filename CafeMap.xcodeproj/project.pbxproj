@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3177EBB282452B5009D4BEE /* CafeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBA282452B5009D4BEE /* CafeMapView.swift */; };
-		E3177EBD282452D2009D4BEE /* CafeMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */; };
-		E3177EBF282452E1009D4BEE /* CafeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBE282452E1009D4BEE /* CafeMapModel.swift */; };
+		E3177EBB282452B5009D4BEE /* PlacesMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBA282452B5009D4BEE /* PlacesMapView.swift */; };
+		E3177EBD282452D2009D4BEE /* PlacesMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */; };
+		E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */; };
 		E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */; };
 		E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E42822CF1B00A14C82 /* RegistrationViewModel.swift */; };
 		E36355E72822CF2700A14C82 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E62822CF2700A14C82 /* RegistrationModel.swift */; };
@@ -48,9 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E3177EBA282452B5009D4BEE /* CafeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapView.swift; sourceTree = "<group>"; };
-		E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapViewModel.swift; sourceTree = "<group>"; };
-		E3177EBE282452E1009D4BEE /* CafeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapModel.swift; sourceTree = "<group>"; };
+		E3177EBA282452B5009D4BEE /* PlacesMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapView.swift; sourceTree = "<group>"; };
+		E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapViewModel.swift; sourceTree = "<group>"; };
+		E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapModel.swift; sourceTree = "<group>"; };
 		E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		E36355E42822CF1B00A14C82 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E36355E62822CF2700A14C82 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
@@ -101,14 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E3177EB928245285009D4BEE /* CafeMapModule */ = {
+		E3177EB928245285009D4BEE /* PlacesMapModule */ = {
 			isa = PBXGroup;
 			children = (
-				E3177EBA282452B5009D4BEE /* CafeMapView.swift */,
-				E3177EBC282452D2009D4BEE /* CafeMapViewModel.swift */,
-				E3177EBE282452E1009D4BEE /* CafeMapModel.swift */,
+				E3177EBA282452B5009D4BEE /* PlacesMapView.swift */,
+				E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */,
+				E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */,
 			);
-			path = CafeMapModule;
+			path = PlacesMapModule;
 			sourceTree = "<group>";
 		};
 		E31BCFBB28252AC800340CF5 /* Navigation */ = {
@@ -165,7 +165,7 @@
 				E375CC0B2824088100186418 /* Localization */,
 				E3BD434A28253A3300B9E1A3 /* Location */,
 				E31BCFBB28252AC800340CF5 /* Navigation */,
-				E3177EB928245285009D4BEE /* CafeMapModule */,
+				E3177EB928245285009D4BEE /* PlacesMapModule */,
 				E36355E32822CE4200A14C82 /* RegistrationModule */,
 				E38F0F8028227995005E14A7 /* SupportingFiles */,
 				E38F0F5C28227939005E14A7 /* Preview Content */,
@@ -362,12 +362,12 @@
 				E36355E72822CF2700A14C82 /* RegistrationModel.swift in Sources */,
 				E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */,
-				E3177EBF282452E1009D4BEE /* CafeMapModel.swift in Sources */,
+				E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */,
 				E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */,
 				E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */,
-				E3177EBB282452B5009D4BEE /* CafeMapView.swift in Sources */,
+				E3177EBB282452B5009D4BEE /* PlacesMapView.swift in Sources */,
 				E375CC1528240D4300186418 /* RegistrationErrors.swift in Sources */,
-				E3177EBD282452D2009D4BEE /* CafeMapViewModel.swift in Sources */,
+				E3177EBD282452D2009D4BEE /* PlacesMapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

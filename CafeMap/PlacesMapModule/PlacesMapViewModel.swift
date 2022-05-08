@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import Combine
 
-final class CafeMapViewModel: ObservableObject, Coordinatable {
+final class PlacesMapViewModel: ObservableObject, Coordinatable {
     
     init() {
         self.model.$coordinateRegion
@@ -21,7 +21,15 @@ final class CafeMapViewModel: ObservableObject, Coordinatable {
     @Published var coordinateRegion = MKCoordinateRegion()
     
     var coordinator: NavigationCoordinator?
-    private let model = CafeMapModel()
+    private let model = PlacesMapModel()
     private var subribtions: Set<AnyCancellable> = []
+    
+    func getUserLocation() {
+        self.model.getUserLocation()
+    }
+    
+    func goToRegistration() -> RegistrationView {
+        return self.coordinator?.goToRegistration() ?? RegistrationView(viewModel: RegistrationViewModel())
+    }
     
 }
