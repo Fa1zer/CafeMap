@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  CafeMap
+
+  Created by Artemiy Zuzin on 07.05.2022.
+  
+*/
+
+NSLocationWhenInUseUsageDescription = "Test";
