@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 import MapKit
+import Firebase
 
 final class PlacesMapModel: ObservableObject {
     
@@ -25,6 +26,20 @@ final class PlacesMapModel: ObservableObject {
     
     func getUserLocation() {
         self.locationManager.getUserLocation()
+    }
+    
+    func signOut() -> Bool {
+        if let _ = Firebase.Auth.auth().currentUser {
+            do {
+                try Firebase.Auth.auth().signOut()
+                
+                return true
+            } catch {
+                print("❌ Error: \(error)")
+            }
+        }
+        
+        return false
     }
     
 }

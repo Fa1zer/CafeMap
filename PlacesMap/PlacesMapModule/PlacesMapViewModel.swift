@@ -32,4 +32,16 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         return self.coordinator?.goToPlaceInformation() ?? PlaceInformationView(viewModel: PlaceInformationViewModel())
     }
     
+    func goToRegistration() -> RegistrationView {
+        return self.coordinator?.goToRegistration() ?? RegistrationView(viewModel: RegistrationViewModel())
+    }
+    
+    func goToRedactPlace() -> RedactPlaceView {
+        return self.coordinator?.goToRedactPlace() ?? RedactPlaceView(viewModel: RedactPlaceViewModel())
+    }
+    
+    func signOut() -> Bool {
+        return self.model.signOut()
+    }
+    
 }
