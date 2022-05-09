@@ -37,8 +37,8 @@ final class RedactPlaceViewModel: ObservableObject, Coordinatable {
         self.model.deletePlace()
     }
     
-    func goToPlacesMap() -> PlacesMapView {
-        return self.coordinator?.goToCafeMap() ?? PlacesMapView(viewModel: PlacesMapViewModel())
+    func goToMyPlaces() -> MyPlacesView {
+        return self.coordinator?.goToMyPlaces() ?? MyPlacesView(viewModel: MyPlacesViewModel())
     }
     
 }

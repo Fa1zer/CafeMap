@@ -59,7 +59,6 @@ struct PlacesMapView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.blue)
                 }
-                .hidden()
             }
             .padding([.leading, .trailing], 20)
             
@@ -77,6 +76,11 @@ struct PlacesMapView: View {
                 } label: {
                     Text(NSLocalizedString("Sign Out", comment: ""))
                 }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink("My places", destination: self.viewModel.goToMyPlaces())
             }
         }
     }
