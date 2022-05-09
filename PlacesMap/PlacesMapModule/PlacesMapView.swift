@@ -12,6 +12,7 @@ struct PlacesMapView: View {
     
     @ObservedObject private var viewModel: PlacesMapViewModel
     @State private var mapUserTrackingMode: MapUserTrackingMode = .follow
+    @State private var registrationIsPresented = false
     
     init(viewModel: PlacesMapViewModel) {
         self.viewModel = viewModel
@@ -58,11 +59,26 @@ struct PlacesMapView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.blue)
                 }
+                .hidden()
             }
             .padding([.leading, .trailing], 20)
+            
+            NavigationLink("", destination: self.viewModel.goToRegistration(), isActive: self.$registrationIsPresented)
+                .onSubmit {
+                    self.registrationIsPresented = false
+                }
         }
         .navigationBarTitle(NSLocalizedString("Map", comment: ""))
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.registrationIsPresented = self.viewModel.signOut()
+                } label: {
+                    Text(NSLocalizedString("Sign Out", comment: ""))
+                }
+            }
+        }
     }
     
 }

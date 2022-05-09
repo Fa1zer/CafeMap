@@ -44,4 +44,13 @@ final class NavigationCoordinator {
         return view
     }
     
+    func goToRedactPlace() -> RedactPlaceView {
+        let viewModel = RedactPlaceViewModel()
+        let view = RedactPlaceView(viewModel: viewModel)
+        
+        viewModel.coordinator = self
+        
+        return view
+    }
+    
 }

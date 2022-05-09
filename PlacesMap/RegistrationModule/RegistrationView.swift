@@ -110,6 +110,9 @@ struct RegistrationView: View {
                     NavigationLink("",
                                    destination: self.viewModel.goToCafeMap(),
                                    isActive: $cafeMapViewIsPresented)
+                    .onSubmit {
+                        self.cafeMapViewIsPresented = false
+                    }
                         .hidden()
                 }
                 .frame(height: 700)
