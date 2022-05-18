@@ -10,7 +10,7 @@ import SwiftUI
 struct RedactPlaceView: View {
     
     @ObservedObject private var viewModel: RedactPlaceViewModel
-    @State private var placesMapIsSelected = false
+    @State private var myPlacesIsSelected = false
     
     init(viewModel: RedactPlaceViewModel) {
         self.viewModel = viewModel
@@ -28,7 +28,7 @@ struct RedactPlaceView: View {
                         .overlay(Circle().stroke(.gray, lineWidth: 5))
                     
                     VStack(alignment: .center, spacing: 15) {
-                        TextField("Name", text: self.$viewModel.name)
+                        TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.name)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -37,7 +37,7 @@ struct RedactPlaceView: View {
                             ))
                             .background(Color(uiColor: .systemGray6))
                         
-                        TextField("Street", text: self.$viewModel.street)
+                        TextField(NSLocalizedString("Street", comment: ""), text: self.$viewModel.street)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -68,7 +68,7 @@ struct RedactPlaceView: View {
                 
                 Button {
                     self.viewModel.saveChanges()
-                    self.placesMapIsSelected = true
+                    self.myPlacesIsSelected = true
                 } label: {
                     HStack {
                         Spacer()
@@ -84,10 +84,10 @@ struct RedactPlaceView: View {
                 .background(.blue)
                 .cornerRadius(10)
                 
-                NavigationLink("", destination: self.viewModel.goToPlacesMap(), isActive: self.$placesMapIsSelected)
+                NavigationLink("", destination: self.viewModel.goToMyPlaces(), isActive: self.$myPlacesIsSelected)
                     .hidden()
                     .onSubmit {
-                        self.placesMapIsSelected = false
+                        self.myPlacesIsSelected = false
                     }
             }
             .padding()
@@ -97,7 +97,7 @@ struct RedactPlaceView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     self.viewModel.deletePlace()
-                    self.placesMapIsSelected = true
+                    self.myPlacesIsSelected = true
                 } label: {
                     Image(uiImage: UIImage(systemName: "trash") ?? UIImage())
                         .resizable()

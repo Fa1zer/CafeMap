@@ -53,4 +53,13 @@ final class NavigationCoordinator {
         return view
     }
     
+    func goToMyPlaces() -> MyPlacesView {
+        let viewModel = MyPlacesViewModel()
+        let view = MyPlacesView(viewModel: viewModel)
+        
+        viewModel.coordinator = self
+        
+        return view
+    }
+    
 }
