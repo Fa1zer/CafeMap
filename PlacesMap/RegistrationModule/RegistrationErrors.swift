@@ -8,7 +8,7 @@
 import Foundation
 
 enum LogInErrors: Error {
-    case passwordFieldIsSmall,someError
+    case passwordFieldIsSmall, someError
 }
 
 enum SignInErrors: Error {

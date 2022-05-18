@@ -16,9 +16,13 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         self.model.$coordinateRegion
             .assign(to: \.coordinateRegion, on: self)
             .store(in: &self.subribtions)
+        self.model.$anotations
+            .assign(to: \.anotations, on: self)
+            .store(in: &self.subribtions)
     }
     
     @Published var coordinateRegion = MKCoordinateRegion()
+    @Published var anotations = [MKAnnotation]()
     
     var coordinator: NavigationCoordinator?
     private let model = PlacesMapModel()
