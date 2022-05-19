@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 final class MyPlacesModel: ObservableObject {
     
-    @Published var places = [Place(id: UUID(), name: "test1", imageName: "logo", street: "street 1", description: "1"),
-                             Place(id: UUID(), name: "test2", imageName: "logo", street: "street 2", description: "2")]
+    @Published var places = [Place(id: UUID(), name: "1", street: "1", placeDescription: "1", lat: 1, lon: 1, image: UIImage(named: "logo")?.pngData(), user: User(id: UUID()))]
     
 }

@@ -32,29 +32,9 @@ final class LocationManager: NSObject, ObservableObject {
 }
 
 extension LocationManager: CLLocationManagerDelegate {
-    #if DEBUG
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            print("DEBUG: Not determined")
-        case .restricted:
-            print("DEBUG: Restricted")
-        case .denied:
-            print("DEBUG: Denied")
-        case .authorizedAlways:
-            print("DEBUG: Auth always")
-        case .authorizedWhenInUse:
-            print("DEBUG: Auth when in use")
-        @unknown default:
-            break
-        }
-    }
-    #endif
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        self.coodinateRegion = MKCoordinateRegion(MKMapRect(origin: MKMapPoint(location.coordinate), size: MKMapSize(width: 10000, height: 10000)))
+        self.coodinateRegion = MKCoordinateRegion(MKMapRect(origin: MKMapPoint(location.coordinate), size: MKMapSize(width: 0.8, height: 0.8)))
     }
-    
 }

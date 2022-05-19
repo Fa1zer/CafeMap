@@ -13,6 +13,7 @@ struct PlacesMapView: View {
     @ObservedObject private var viewModel: PlacesMapViewModel
     @State private var mapUserTrackingMode: MapUserTrackingMode = .follow
     @State private var registrationIsPresented = false
+    @State var direction = ""
     
     init(viewModel: PlacesMapViewModel) {
         self.viewModel = viewModel
@@ -20,15 +21,10 @@ struct PlacesMapView: View {
     
     var body: some View {
         VStack {
-            Map(
-                coordinateRegion: self.$viewModel.coordinateRegion,
-                interactionModes: .all,
-                showsUserLocation: true,
-                userTrackingMode: self.$mapUserTrackingMode
-            )
-            .onAppear() {
-                self.viewModel.getUserLocation()
-            }
+            MyMapView(viewModel: self.viewModel)
+                .onAppear() {
+                    self.viewModel.getUserLocation()
+                }
             
             HStack(alignment: .center, spacing: 15) {
                 Image("logo")

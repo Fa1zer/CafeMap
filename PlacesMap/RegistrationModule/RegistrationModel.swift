@@ -31,10 +31,10 @@ final class RegistrationModel {
                 didNotComplete(.someError)
                 
                 print("❌ Error: \(error.localizedDescription)")
-
+                
                 return
             }
-            
+                        
             didComplete()
         }
     }

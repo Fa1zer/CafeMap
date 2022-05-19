@@ -20,6 +20,7 @@ final class PlacesMapModel: ObservableObject {
     }
     
     @Published var coordinateRegion = MKCoordinateRegion()
+    @Published var anotations = [MKAnnotation]()
     
     private var subscriptions: Set<AnyCancellable> = []
     private let locationManager = LocationManager.shared
