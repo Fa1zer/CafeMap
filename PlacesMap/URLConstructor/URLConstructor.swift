@@ -58,9 +58,7 @@ final class URLConstructor {
     }
     
     private enum URLPaths: String {
-        case users
-        case places
-        case user
+        case users, places, user
     }
     
 }
