@@ -8,5 +8,5 @@
 import Foundation
 
 struct User: Codable {
-    var id: UUID
+    var id: String
 }

@@ -9,8 +9,12 @@ import Foundation
 
 final class PlaceInformationViewModel: ObservableObject, Coordinatable {
     
-    var coordinator: NavigationCoordinator?
+    private let model: PlaceInformationModel
     
-    private let model = PlaceInformationModel()
+    init(model: PlaceInformationModel) {
+        self.model = model
+    }
+    
+    var coordinator: NavigationCoordinator?
     
 }

@@ -126,6 +126,6 @@ struct RegistrationView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(viewModel: RegistrationViewModel())
+        RegistrationView(viewModel: RegistrationViewModel(model: RegistrationModel(dataManager: DataManager())))
     }
 }

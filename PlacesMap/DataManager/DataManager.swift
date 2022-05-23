@@ -8,56 +8,35 @@
 import Foundation
 import Combine
 
-final class DataManager: ObservableObject {
+final class DataManager {
+        
+    private let urlConstructor = URLConstructor.default
     
-    @Published var places = URLSession.shared.dataTaskPublisher(for: URLConstructor.default.allPlacesURL())
-        .tryMap { response -> Data in
-            guard let httpResponse = response.response as? HTTPURLResponse,
-                  httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
-            
-            return response.data
-        }
-        .decode(type: [Place].self, decoder: JSONDecoder())
-        .replaceError(with: [Place]())
-        .receive(on: RunLoop.main)
-        .eraseToAnyPublisher()
-    
-    var userID: UUID?
-    
-    func getUser(userID: UUID) {
-        URLSession.shared.dataTask(with: URLConstructor.default.userURL(userID: userID)) { data, _, error in
-            if let error = error {
-                print("❌ Error: \(error.localizedDescription)")
-            }
-            
-            guard let data = data else {
-                print("❌ Error: Data is equal to nil")
-                
-                return
-            }
-            
-            guard let user = try? JSONDecoder().decode(User.self, from: data) else {
-                print("❌ Error: Decode error")
-                
-                return
-            }
-            
-            if user.id == userID { self.userID = userID }
-        }
-        .resume()
-    }
-    
-    func getAllUserPlaces() -> AnyPublisher<[Place], Never> {
-        return URLSession.shared.dataTaskPublisher(for: URLConstructor.default.allUserPlacesURL(userID: self.userID ?? UUID()))
-            .tryMap { response -> Data in
-                guard let httpResponse = response.response as? HTTPURLResponse,
+    func getAllPlaces() -> AnyPublisher<[Place], Never> {
+        return URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allPlacesURL())
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
                 
-                return response.data
+                return element.data
             }
             .decode(type: [Place].self, decoder: JSONDecoder())
             .replaceError(with: [Place]())
             .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func getAllUserPlaces(userID: UUID?) -> AnyPublisher<[Place], Never> {
+        return URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allUserPlacesURL(userID: userID))
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
+                
+                return element.data
+            }
+            .decode(type: [Place].self, decoder: JSONDecoder())
+            .replaceError(with: [Place]())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     

@@ -21,13 +21,25 @@ struct PlacesMapView: View {
     
     var body: some View {
         VStack {
-            MyMapView(viewModel: self.viewModel)
-                .onAppear() {
-                    self.viewModel.getUserLocation()
+            Map(coordinateRegion: self.$viewModel.coordinateRegion, interactionModes: .all, showsUserLocation: true, userTrackingMode: self.$mapUserTrackingMode, annotationItems: self.viewModel.places) { place in
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(place.lat), longitude: CLLocationDegrees(place.lon))) {
+                    Image("pin")
+                        .resizable()
+                        .frame(width: 20, height: 28)
+                        .onTapGesture {
+                            self.viewModel.image = UIImage(data: place.image ?? Data()) ?? UIImage()
+                            self.viewModel.name = place.name
+                            self.viewModel.street = place.street
+                        }
                 }
+            }
+            .onAppear() {
+                self.viewModel.getAllPlaces()
+                self.viewModel.getUserLocation()
+            }
             
             HStack(alignment: .center, spacing: 15) {
-                Image("logo")
+                Image(uiImage: self.viewModel.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
@@ -35,11 +47,11 @@ struct PlacesMapView: View {
                     .overlay(Circle().stroke(.gray, lineWidth: 5))
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Some Title")
+                    Text(self.viewModel.name)
                         .font(.title)
                         .foregroundColor(.black)
                     
-                    Text("Some street")
+                    Text(self.viewModel.street)
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
@@ -85,6 +97,6 @@ struct PlacesMapView: View {
 
 struct CafeMapView_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesMapView(viewModel: PlacesMapViewModel())
+        PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
 }

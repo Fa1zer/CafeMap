@@ -10,20 +10,50 @@ import CoreLocation
 import Combine
 import MapKit
 import Firebase
+import SwiftUI
 
 final class PlacesMapModel: ObservableObject {
     
-    init() {
+    private let dataManager: DataManager
+    @ObservedObject private var locationManager: LocationManager
+    
+    init(dataManager: DataManager, locationManager: LocationManager) {
+        self.dataManager = dataManager
+        self.locationManager = locationManager
+        
         self.locationManager.$coodinateRegion
             .assign(to: \.coordinateRegion, on: self)
-            .store(in: &subscriptions)
+            .store(in: &self.subscriptions)
+        
+        self.getAllPlaces()
     }
     
     @Published var coordinateRegion = MKCoordinateRegion()
-    @Published var anotations = [MKAnnotation]()
+    @Published var places = [Place]()
     
+    var anotations: [MKAnnotation] {
+        var anotations = [MKAnnotation]()
+        
+        self.places.forEach { place in
+            let anotation = MKPointAnnotation()
+            
+            anotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(place.lat),
+                                                          longitude: CLLocationDegrees(place.lon))
+            
+            anotations.append(anotation)
+        }
+                
+        return anotations
+    }
+        
     private var subscriptions: Set<AnyCancellable> = []
-    private let locationManager = LocationManager.shared
+    
+    func getAllPlaces() {
+        self.dataManager.getAllPlaces()
+            .receive(on: RunLoop.main)
+            .assign(to: \.places, on: self)
+            .store(in: &self.subscriptions)
+    }
     
     func getUserLocation() {
         self.locationManager.getUserLocation()

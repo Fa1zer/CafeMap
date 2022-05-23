@@ -14,15 +14,16 @@ struct MyMapView: UIViewRepresentable {
     
     typealias UIViewType = MKMapView
     
-    @ObservedObject private var viewModel: PlacesMapViewModel
+    @ObservedObject private var viewModel: AddPlaceViewModel
     
-    init(viewModel: PlacesMapViewModel) {
+    init(viewModel: AddPlaceViewModel) {
         self.viewModel = viewModel
     }
     
     private let mapView: MKMapView = {
         let mapView = MKMapView()
         
+        mapView.isZoomEnabled = true
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         
@@ -35,25 +36,27 @@ struct MyMapView: UIViewRepresentable {
         self.mapView.addGestureRecognizer(longPressGesture)
         self.mapView.setRegion(self.viewModel.coordinateRegion, animated: true)
         
-        self.$viewModel.anotations.wrappedValue.forEach { self.mapView.addAnnotation($0) }
-    
         return self.mapView
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        self.$viewModel.anotations.wrappedValue.forEach { self.mapView.addAnnotation($0) }
         self.mapView.setRegion(self.$viewModel.coordinateRegion.wrappedValue, animated: true)
     }
-
+    
     func makeCoordinator() -> Coordinator {
-        Coordinator(self.mapView)
+        Coordinator(mapView: self.mapView, viewModel: self.viewModel)
     }
     
-    final class Coordinator {
-        private let mapView: MKMapView
+    final class Coordinator: NSObject {
         
-        init(_ mapView: MKMapView) {
+        private let mapView: MKMapView
+        private let viewModel: AddPlaceViewModel
+        
+        init(mapView: MKMapView, viewModel: AddPlaceViewModel) {
             self.mapView = mapView
+            self.viewModel = viewModel
+            
+            super.init()
         }
     
         required init?(coder: NSCoder) {
@@ -67,6 +70,9 @@ struct MyMapView: UIViewRepresentable {
                 let anotation = MKPointAnnotation()
                 
                 anotation.coordinate = touchCoordinates
+                
+                self.viewModel.lat = Float(touchCoordinates.latitude)
+                self.viewModel.lon = Float(touchCoordinates.longitude)
                 
                 self.mapView.addAnnotation(anotation)
             }
