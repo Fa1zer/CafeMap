@@ -26,13 +26,21 @@ final class URLConstructor {
             .appendingPathComponent(URLPaths.users.rawValue) ?? URL(fileURLWithPath: "")
     }
     
-    func userURL(userID: UUID) -> URL {
+    func userURL(userID: UUID?) -> URL {
+        guard let userID = userID else {
+            return URL(fileURLWithPath: "")
+        }
+        
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.users.rawValue)
             .appendingPathComponent(userID.uuidString) ?? URL(fileURLWithPath: "")
     }
     
-    func allUserPlacesURL(userID: UUID) -> URL {
+    func allUserPlacesURL(userID: UUID?) -> URL {
+        guard let userID = userID else {
+            return URL(fileURLWithPath: "")
+        }
+        
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.users.rawValue)
             .appendingPathComponent(userID.uuidString)
@@ -44,13 +52,21 @@ final class URLConstructor {
             .appendingPathComponent(URLPaths.places.rawValue) ?? URL(fileURLWithPath: "")
     }
     
-    func placeURL(placeID: UUID) -> URL {
+    func placeURL(placeID: UUID?) -> URL {
+        guard let placeID = placeID else {
+            return URL(fileURLWithPath: "")
+        }
+
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.places.rawValue)
             .appendingPathComponent(placeID.uuidString) ?? URL(fileURLWithPath: "")
     }
     
-    func placeUserURL(placeID: UUID) -> URL {
+    func placeUserURL(placeID: UUID?) -> URL {
+        guard let placeID = placeID else {
+            return URL(fileURLWithPath: "")
+        }
+        
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.places.rawValue)
             .appendingPathComponent(placeID.uuidString)

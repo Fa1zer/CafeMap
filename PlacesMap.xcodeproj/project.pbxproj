@@ -41,6 +41,9 @@
 		E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD434828253A2600B9E1A3 /* LocationManager.swift */; };
 		E3C485262826F89400E53D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3C485282826F89400E53D51 /* InfoPlist.strings */; };
 		E3CB9F0A282D70AF003C3B54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3CB9F09282D70AF003C3B54 /* GoogleService-Info.plist */; };
+		E3D14A36283C09130039F702 /* AddPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D14A35283C09120039F702 /* AddPlaceView.swift */; };
+		E3D14A38283C09250039F702 /* AddPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D14A37283C09250039F702 /* AddPlaceViewModel.swift */; };
+		E3D14A3A283C09320039F702 /* AddPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D14A39283C09320039F702 /* AddPlaceModel.swift */; };
 		E3D47874282AD82600556070 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D47873282AD82600556070 /* MyMapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +101,9 @@
 		E3C485272826F89400E53D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3C485292826F89600E53D51 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3CB9F09282D70AF003C3B54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3D14A35283C09120039F702 /* AddPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceView.swift; sourceTree = "<group>"; };
+		E3D14A37283C09250039F702 /* AddPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceViewModel.swift; sourceTree = "<group>"; };
+		E3D14A39283C09320039F702 /* AddPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceModel.swift; sourceTree = "<group>"; };
 		E3D47873282AD82600556070 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,7 +138,6 @@
 		E3177EB928245285009D4BEE /* PlacesMapModule */ = {
 			isa = PBXGroup;
 			children = (
-				E3D47870282AD6F500556070 /* Map */,
 				E3177EBA282452B5009D4BEE /* PlacesMapView.swift */,
 				E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */,
 				E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */,
@@ -213,6 +218,7 @@
 				E3577ACD28342916001ABC07 /* DataModels */,
 				E375CC0B2824088100186418 /* Localization */,
 				E3BD434A28253A3300B9E1A3 /* Location */,
+				E3D14A34283C04D20039F702 /* AddPlaceModule */,
 				E3AC99AE2829A995008EDB81 /* MyPlacesModule */,
 				E3A4A6B32828D2B300E865B4 /* RedactPlaceModule */,
 				E39ED95B282815C000CBEB2A /* PlaceInformationModule */,
@@ -304,6 +310,17 @@
 				E3BD434828253A2600B9E1A3 /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		E3D14A34283C04D20039F702 /* AddPlaceModule */ = {
+			isa = PBXGroup;
+			children = (
+				E3D47870282AD6F500556070 /* Map */,
+				E3D14A35283C09120039F702 /* AddPlaceView.swift */,
+				E3D14A37283C09250039F702 /* AddPlaceViewModel.swift */,
+				E3D14A39283C09320039F702 /* AddPlaceModel.swift */,
+			);
+			path = AddPlaceModule;
 			sourceTree = "<group>";
 		};
 		E3D47870282AD6F500556070 /* Map */ = {
@@ -460,6 +477,7 @@
 				E3BCC18B2836B71700634C4A /* DataManager.swift in Sources */,
 				E38F0F5928227934005E14A7 /* RegistrationView.swift in Sources */,
 				E3AC99B42829AA70008EDB81 /* MyPlacesModel.swift in Sources */,
+				E3D14A36283C09130039F702 /* AddPlaceView.swift in Sources */,
 				E36355E72822CF2700A14C82 /* RegistrationModel.swift in Sources */,
 				E39ED95F2828161400CBEB2A /* PlaceInformationModel.swift in Sources */,
 				E32504BB28357FE3005A61F8 /* URLConstructor.swift in Sources */,
@@ -467,6 +485,7 @@
 				E3D47874282AD82600556070 /* MyMapView.swift in Sources */,
 				E3AC99B22829AA59008EDB81 /* MyPlacesViewModel.swift in Sources */,
 				E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */,
+				E3D14A3A283C09320039F702 /* AddPlaceModel.swift in Sources */,
 				E3A4A6B52828D30E00E865B4 /* RedactPlaceModel.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */,
 				E3577ACF28342969001ABC07 /* User.swift in Sources */,
@@ -477,6 +496,7 @@
 				E39ED95D2828160500CBEB2A /* PlaceInformationViewModel.swift in Sources */,
 				E3177EBB282452B5009D4BEE /* PlacesMapView.swift in Sources */,
 				E375CC1528240D4300186418 /* RegistrationErrors.swift in Sources */,
+				E3D14A38283C09250039F702 /* AddPlaceViewModel.swift in Sources */,
 				E3AC99B02829AA4C008EDB81 /* MyPlacesView.swift in Sources */,
 				E3A4A6B72828D31B00E865B4 /* RedactPlaceViewModel.swift in Sources */,
 				E3177EBD282452D2009D4BEE /* PlacesMapViewModel.swift in Sources */,

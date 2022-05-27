@@ -1,20 +1,21 @@
 //
-//  RedactPlaceView.swift
+//  AddPlaceView.swift
 //  PlacesMap
 //
-//  Created by Artemiy Zuzin on 09.05.2022.
+//  Created by Artemiy Zuzin on 23.05.2022.
 //
 
 import SwiftUI
 
-struct RedactPlaceView: View {
+struct AddPlaceView: View {
     
-    @ObservedObject private var viewModel: RedactPlaceViewModel
-    @State private var myPlacesIsSelected = false
+    @ObservedObject private var viewModel: AddPlaceViewModel
     
-    init(viewModel: RedactPlaceViewModel) {
+    init(viewModel: AddPlaceViewModel) {
         self.viewModel = viewModel
     }
+    
+    @State private var myPlacesIsSelected = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -59,12 +60,19 @@ struct RedactPlaceView: View {
                 
                 TextEditor(text: self.$viewModel.description)
                     .padding()
-                    .frame(height: 500)
+                    .frame(height: 200)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(
                         .gray,
                         lineWidth: 0.5
                     ))
                     .background(Color(uiColor: .systemGray6))
+                
+                MyMapView(viewModel: self.viewModel)
+                    .frame(height: 350)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(
+                        .gray,
+                        lineWidth: 0.5
+                    ))
                 
                 Button {
                     self.viewModel.saveChanges()
@@ -83,36 +91,16 @@ struct RedactPlaceView: View {
                 .frame(height: 50)
                 .background(.blue)
                 .cornerRadius(10)
-                
-                NavigationLink("", destination: self.viewModel.goToMyPlaces(), isActive: self.$myPlacesIsSelected)
-                    .hidden()
-                    .onSubmit {
-                        self.myPlacesIsSelected = false
-                    }
             }
             .padding()
         }
         .navigationBarTitle(NSLocalizedString("Redact", comment: ""))
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    self.viewModel.deletePlace()
-                    self.myPlacesIsSelected = true
-                } label: {
-                    Image(uiImage: UIImage(systemName: "trash") ?? UIImage())
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
-                }
-            }
-        }
     }
     
 }
 
-struct RedactPlaceView_Previews: PreviewProvider {
+struct AddPlaceView_Previews: PreviewProvider {
     static var previews: some View {
-        RedactPlaceView(viewModel: RedactPlaceViewModel(model: RedactPlaceModel(dataManager: DataManager())))
+        AddPlaceView(viewModel: AddPlaceViewModel(model: AddPlaceModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
 }

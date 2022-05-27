@@ -54,7 +54,7 @@ struct PlaceInformationView: View {
 
 struct PlaceInformationView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceInformationView(viewModel: PlaceInformationViewModel())
+        PlaceInformationView(viewModel: PlaceInformationViewModel(model: PlaceInformationModel(dataManager: DataManager())))
             .previewInterfaceOrientation(.portrait)
     }
 }

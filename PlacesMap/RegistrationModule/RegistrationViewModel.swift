@@ -10,13 +10,17 @@ import Combine
 
 final class RegistrationViewModel: ObservableObject, Coordinatable {
     
+    private let model: RegistrationModel
+        
+        init(model: RegistrationModel) {
+            self.model = model
+        }
+    
     var coordinator: NavigationCoordinator?
     
     @Published var password = ""
     @Published var email = ""
-    
-    private let logInModel = RegistrationModel()
-    
+        
     func logIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         if password.count < 6 {
             didNotComplete(.passwordFieldIsSmall)
@@ -24,7 +28,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
             return
         }
         
-        self.logInModel.logIn(
+        self.model.logIn(
             email: self.email,
             passsword: self.password,
             didComplete: didComplete,
@@ -39,7 +43,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
             return
         }
         
-        self.logInModel.signIn(
+        self.model.signIn(
             email: self.email,
             passsword: self.password,
             didComplete: didComplete,
@@ -48,7 +52,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
     }
     
     func goToCafeMap() -> PlacesMapView {
-        return self.coordinator?.goToCafeMap() ?? PlacesMapView(viewModel: PlacesMapViewModel())
+        return self.coordinator?.goToCafeMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
 }

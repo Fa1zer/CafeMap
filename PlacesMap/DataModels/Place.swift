@@ -9,7 +9,7 @@ import Foundation
 
 struct Place: Codable, Identifiable {
     
-    let id: UUID
+    let id: String
     var name: String
     var street: String
     var placeDescription: String
@@ -17,16 +17,5 @@ struct Place: Codable, Identifiable {
     var lon: Float
     var image: Data?
     var user: User
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case street
-        case placeDescription
-        case lat
-        case lon
-        case image
-        case user = "userID"
-    }
     
 }

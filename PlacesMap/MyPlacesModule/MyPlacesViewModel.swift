@@ -9,7 +9,11 @@ import Foundation
 
 final class MyPlacesViewModel: ObservableObject, Coordinatable {
     
-    init() {
+    private let model: MyPlacesModel
+    
+    init(model: MyPlacesModel) {
+        self.model = model
+        
         self.model.$places
             .assign(to: &self.$places)
     }
@@ -17,11 +21,13 @@ final class MyPlacesViewModel: ObservableObject, Coordinatable {
     @Published var places = [Place]()
     
     var coordinator: NavigationCoordinator?
-    
-    private let model = MyPlacesModel()
-    
+        
     func goToRedactPlace() -> RedactPlaceView {
-        return self.coordinator?.goToRedactPlace() ?? RedactPlaceView(viewModel: RedactPlaceViewModel())
+        return self.coordinator?.goToRedactPlace() ?? RedactPlaceView(viewModel: RedactPlaceViewModel(model: RedactPlaceModel(dataManager: DataManager())))
+    }
+    
+    func goToAddPlace() -> AddPlaceView {
+        return self.coordinator?.goToAddPlace() ?? AddPlaceView(viewModel: AddPlaceViewModel(model: AddPlaceModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
 }

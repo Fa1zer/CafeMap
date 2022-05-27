@@ -42,12 +42,21 @@ struct MyPlacesView: View {
             .padding()
         }
         .navigationBarTitle(NSLocalizedString("My places", comment: ""))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: self.viewModel.goToAddPlace()) {
+                    Image(uiImage: UIImage(systemName: "plus") ?? UIImage())
+                        .renderingMode(.template)
+                        .foregroundColor(.blue)
+                }
+            }
+        }
     }
     
 }
 
 struct MyPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPlacesView(viewModel: MyPlacesViewModel())
+        MyPlacesView(viewModel: MyPlacesViewModel(model: MyPlacesModel(dataManager: DataManager())))
     }
 }

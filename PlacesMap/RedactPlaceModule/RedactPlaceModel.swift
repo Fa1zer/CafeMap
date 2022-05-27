@@ -9,6 +9,12 @@ import Foundation
 
 final class RedactPlaceModel: ObservableObject {
     
+    private let dataManger: DataManager
+    
+    init(dataManager: DataManager) {
+        self.dataManger = dataManager
+    }
+    
     @Published var name = ""
     @Published var street = ""
     @Published var description = ""

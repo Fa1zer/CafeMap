@@ -10,6 +10,12 @@ import UIKit
 
 final class MyPlacesModel: ObservableObject {
     
-    @Published var places = [Place(id: UUID(), name: "1", street: "1", placeDescription: "1", lat: 1, lon: 1, image: UIImage(named: "logo")?.pngData(), user: User(id: UUID()))]
+    private let dataManager: DataManager
+    
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
+    
+    @Published var places = [Place(id: "\(UUID())", name: "1", street: "1", placeDescription: "1", lat: 1, lon: 1, image: UIImage(named: "logo")?.pngData(), user: User(id: "\(UUID())"))]
     
 }

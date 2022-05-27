@@ -11,6 +11,12 @@ import FirebaseAuth
 
 final class RegistrationModel {
     
+    private let dataManager: DataManager
+    
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
+    
     func logIn(email: String, passsword: String, didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: passsword) { result, error in
             if let error = error {

@@ -1,19 +1,26 @@
 //
-//  RedactPlaceViewModel.swift
+//  AddPlaceViewModel.swift
 //  PlacesMap
 //
-//  Created by Artemiy Zuzin on 09.05.2022.
+//  Created by Artemiy Zuzin on 23.05.2022.
 //
 
 import Foundation
+import CoreLocation
+import Combine
+import MapKit
+import SwiftUI
 
-final class RedactPlaceViewModel: ObservableObject, Coordinatable {
+final class AddPlaceViewModel: ObservableObject, Coordinatable {
     
-    private let model: RedactPlaceModel
+    @ObservedObject private var model: AddPlaceModel
     
-    init(model: RedactPlaceModel) {
+    init(model: AddPlaceModel) {
         self.model = model
         
+        self.model.$coordinateRegion
+            .assign(to: \.coordinateRegion, on: self)
+            .store(in: &self.subribtions)
         self.$name
             .assign(to: &self.model.$name)
         self.$street
@@ -24,13 +31,21 @@ final class RedactPlaceViewModel: ObservableObject, Coordinatable {
             .assign(to: &self.model.$imageName)
     }
     
+    var coordinator: NavigationCoordinator?
+    @Published var coordinateRegion = MKCoordinateRegion()
     @Published var name = ""
     @Published var street = ""
     @Published var description = ""
     @Published var imageName = ""
+    @Published var lat: Float = 0
+    @Published var lon: Float = 0
     
-    var coordinator: NavigationCoordinator?
-        
+    private var subribtions: Set<AnyCancellable> = []
+    
+    func getUserLocation() {
+        self.model.getUserLocation()
+    }
+    
     func saveChanges() {
         self.model.saveChanges()
     }
