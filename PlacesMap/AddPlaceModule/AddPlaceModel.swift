@@ -26,12 +26,6 @@ final class AddPlaceModel: ObservableObject {
     }
     
     @Published var coordinateRegion = MKCoordinateRegion()
-    @Published var name = ""
-    @Published var street = ""
-    @Published var description = ""
-    @Published var imageName = ""
-    @Published var lat: Float = 0
-    @Published var lon: Float = 0
     
     private var subscriptions: Set<AnyCancellable> = []
     
@@ -39,12 +33,8 @@ final class AddPlaceModel: ObservableObject {
         self.locationManager.getUserLocation()
     }
     
-    func saveChanges() {
-        print(#function)
-    }
-    
-    func deletePlace() {
-        print(#function)
+    func saveChanges(place: Place) {
+        self.dataManager.postPlace(place: place)
     }
     
 }

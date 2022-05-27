@@ -20,7 +20,7 @@ final class NavigationCoordinator {
         return self.goToRegistration()
     }
     
-    func goToCafeMap() -> PlacesMapView {
+    func goToPlacesMap() -> PlacesMapView {
         let viewModel = PlacesMapViewModel(model: PlacesMapModel(dataManager: self.dataManager, locationManager: self.locationManager))
         let view = PlacesMapView(viewModel: viewModel)
                 
@@ -38,8 +38,8 @@ final class NavigationCoordinator {
         return view
     }
     
-    func goToPlaceInformation() -> PlaceInformationView {
-        let viewModel = PlaceInformationViewModel(model: PlaceInformationModel(dataManager: self.dataManager))
+    func goToPlaceInformation(place: Place) -> PlaceInformationView {
+        let viewModel = PlaceInformationViewModel(model: PlaceInformationModel(place: place))
         let view = PlaceInformationView(viewModel: viewModel)
         
         viewModel.coordinator = self
@@ -47,8 +47,8 @@ final class NavigationCoordinator {
         return view
     }
     
-    func goToRedactPlace() -> RedactPlaceView {
-        let viewModel = RedactPlaceViewModel(model: RedactPlaceModel(dataManager: self.dataManager))
+    func goToRedactPlace(place: Place) -> RedactPlaceView {
+        let viewModel = RedactPlaceViewModel(model: RedactPlaceModel(dataManager: self.dataManager, place: place))
         let view = RedactPlaceView(viewModel: viewModel)
         
         viewModel.coordinator = self

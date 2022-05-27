@@ -19,7 +19,7 @@ struct PlaceInformationView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(alignment: .leading, spacing: 15) {
                 HStack(alignment: .center, spacing: 15) {
-                    Image("logo")
+                    Image(uiImage: self.viewModel.image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
@@ -29,11 +29,11 @@ struct PlaceInformationView: View {
                     Spacer()
                     
                     VStack(alignment: .center, spacing: 5) {
-                        Text("Some Title")
+                        Text(self.viewModel.name)
                             .font(.title)
                             .foregroundColor(.black)
                         
-                        Text("Some street")
+                        Text(self.viewModel.street)
                             .font(.headline)
                             .foregroundColor(.gray)
                     }
@@ -42,7 +42,7 @@ struct PlaceInformationView: View {
                 }
                 .padding()
                 
-                Text("\(NSLocalizedString("Description", comment: "")):\n vbfhbhvhfbvhfbvhfbvhfbvfhvbfvbhfhfhhfhfhfhfhfhfhfhfhfhfhhfhfhfhhfhfhfhfhfhfhfhf")
+                Text("\(NSLocalizedString("Description", comment: "")):\n\(self.viewModel.description)")
                     .padding()
                     .font(.body)
             }
@@ -54,7 +54,7 @@ struct PlaceInformationView: View {
 
 struct PlaceInformationView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceInformationView(viewModel: PlaceInformationViewModel(model: PlaceInformationModel(dataManager: DataManager())))
+        PlaceInformationView(viewModel: PlaceInformationViewModel(model: PlaceInformationModel(place: Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID()))))
             .previewInterfaceOrientation(.portrait)
     }
 }

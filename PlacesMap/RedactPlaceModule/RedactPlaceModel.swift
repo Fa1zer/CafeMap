@@ -9,23 +9,20 @@ import Foundation
 
 final class RedactPlaceModel: ObservableObject {
     
-    private let dataManger: DataManager
+    private let dataManager: DataManager
+    @Published var place: Place
     
-    init(dataManager: DataManager) {
-        self.dataManger = dataManager
+    init(dataManager: DataManager, place: Place) {
+        self.dataManager = dataManager
+        self.place = place
     }
     
-    @Published var name = ""
-    @Published var street = ""
-    @Published var description = ""
-    @Published var imageName = ""
-    
-    func saveChanges() {
-        print(#function)
+    func saveChanges(place: Place) {
+        self.dataManager.putPlace(place: place)
     }
     
     func deletePlace() {
-        print(#function)
+        self.dataManager.deletePlace(placeID: self.place.id ?? UUID())
     }
 
 }

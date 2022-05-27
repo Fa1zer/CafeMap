@@ -14,33 +14,24 @@ final class RedactPlaceViewModel: ObservableObject, Coordinatable {
     init(model: RedactPlaceModel) {
         self.model = model
         
-        self.$name
-            .assign(to: &self.model.$name)
-        self.$street
-            .assign(to: &self.model.$street)
-        self.$description
-            .assign(to: &self.model.$description)
-        self.$imageName
-            .assign(to: &self.model.$imageName)
+        self.model.$place
+            .assign(to: &self.$place)
     }
     
-    @Published var name = ""
-    @Published var street = ""
-    @Published var description = ""
-    @Published var imageName = ""
-    
     var coordinator: NavigationCoordinator?
+    
+    @Published var place = Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
         
     func saveChanges() {
-        self.model.saveChanges()
+        self.model.saveChanges(place: self.place)
     }
     
     func deletePlace() {
         self.model.deletePlace()
     }
     
-    func goToMyPlaces() -> MyPlacesView {
-        return self.coordinator?.goToMyPlaces() ?? MyPlacesView(viewModel: MyPlacesViewModel(model: MyPlacesModel(dataManager: DataManager())))
+    func goToPlacesMap() -> PlacesMapView {
+        return self.coordinator?.goToPlacesMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
 }

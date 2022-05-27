@@ -21,15 +21,13 @@ struct AddPlaceView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(alignment: .center, spacing: 15) {
                 HStack(spacing: 15) {
-                    Image("logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    CustomImage(viewModel: self.viewModel)
                         .frame(width: 115, height: 115)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(.gray, lineWidth: 5))
                     
                     VStack(alignment: .center, spacing: 15) {
-                        TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.name)
+                        TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.place.name)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -38,7 +36,7 @@ struct AddPlaceView: View {
                             ))
                             .background(Color(uiColor: .systemGray6))
                         
-                        TextField(NSLocalizedString("Street", comment: ""), text: self.$viewModel.street)
+                        TextField(NSLocalizedString("Street", comment: ""), text: self.$viewModel.place.street)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -58,7 +56,7 @@ struct AddPlaceView: View {
                     Spacer()
                 }
                 
-                TextEditor(text: self.$viewModel.description)
+                TextEditor(text: self.$viewModel.place.placeDescription)
                     .padding()
                     .frame(height: 200)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -93,6 +91,9 @@ struct AddPlaceView: View {
                 .cornerRadius(10)
             }
             .padding()
+            
+            NavigationLink("", destination: self.viewModel.goToPlacesMap(), isActive: self.$myPlacesIsSelected)
+                .hidden()
         }
         .navigationBarTitle(NSLocalizedString("Redact", comment: ""))
     }

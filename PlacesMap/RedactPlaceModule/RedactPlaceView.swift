@@ -28,7 +28,7 @@ struct RedactPlaceView: View {
                         .overlay(Circle().stroke(.gray, lineWidth: 5))
                     
                     VStack(alignment: .center, spacing: 15) {
-                        TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.name)
+                        TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.place.name)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -37,7 +37,7 @@ struct RedactPlaceView: View {
                             ))
                             .background(Color(uiColor: .systemGray6))
                         
-                        TextField(NSLocalizedString("Street", comment: ""), text: self.$viewModel.street)
+                        TextField(NSLocalizedString("Street", comment: ""), text: self.$viewModel.place.street)
                             .padding()
                             .frame(height: 50)
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -57,7 +57,7 @@ struct RedactPlaceView: View {
                     Spacer()
                 }
                 
-                TextEditor(text: self.$viewModel.description)
+                TextEditor(text: self.$viewModel.place.placeDescription)
                     .padding()
                     .frame(height: 500)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(
@@ -84,7 +84,7 @@ struct RedactPlaceView: View {
                 .background(.blue)
                 .cornerRadius(10)
                 
-                NavigationLink("", destination: self.viewModel.goToMyPlaces(), isActive: self.$myPlacesIsSelected)
+                NavigationLink("", destination: self.viewModel.goToPlacesMap(), isActive: self.$myPlacesIsSelected)
                     .hidden()
                     .onSubmit {
                         self.myPlacesIsSelected = false
@@ -113,6 +113,6 @@ struct RedactPlaceView: View {
 
 struct RedactPlaceView_Previews: PreviewProvider {
     static var previews: some View {
-        RedactPlaceView(viewModel: RedactPlaceViewModel(model: RedactPlaceModel(dataManager: DataManager())))
+        RedactPlaceView(viewModel: RedactPlaceViewModel(model: RedactPlaceModel(dataManager: DataManager(), place: Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID()))))
     }
 }
