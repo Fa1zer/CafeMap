@@ -15,7 +15,7 @@ struct Place: Codable, Identifiable {
     var placeDescription: String
     var lat: Float
     var lon: Float
-    var image: Data?
+    var image: String?
     var userID: UUID
     
 }

@@ -11,7 +11,7 @@
 		E3177EBD282452D2009D4BEE /* PlacesMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */; };
 		E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */; };
 		E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */; };
-		E3211AD928416E08000A907F /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3211AD828416E07000A907F /* CustomImage.swift */; };
+		E3211AD928416E08000A907F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3211AD828416E07000A907F /* ImagePicker.swift */; };
 		E32504BB28357FE3005A61F8 /* URLConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32504BA28357FE3005A61F8 /* URLConstructor.swift */; };
 		E3577ACF28342969001ABC07 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3577ACE28342969001ABC07 /* User.swift */; };
 		E3577AD1283429B0001ABC07 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3577AD0283429B0001ABC07 /* Place.swift */; };
@@ -70,7 +70,7 @@
 		E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapViewModel.swift; sourceTree = "<group>"; };
 		E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapModel.swift; sourceTree = "<group>"; };
 		E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
-		E3211AD828416E07000A907F /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
+		E3211AD828416E07000A907F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E32504BA28357FE3005A61F8 /* URLConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstructor.swift; sourceTree = "<group>"; };
 		E3577ACE28342969001ABC07 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3577AD0283429B0001ABC07 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -155,12 +155,12 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		E3211AD728416DF1000A907F /* CustomImage */ = {
+		E3211AD728416DF1000A907F /* CustomUIElements */ = {
 			isa = PBXGroup;
 			children = (
-				E3211AD828416E07000A907F /* CustomImage.swift */,
+				E3211AD828416E07000A907F /* ImagePicker.swift */,
 			);
-			path = CustomImage;
+			path = CustomUIElements;
 			sourceTree = "<group>";
 		};
 		E32504B928357FC1005A61F8 /* URLConstructor */ = {
@@ -223,6 +223,7 @@
 		E38F0F5528227934005E14A7 /* PlacesMap */ = {
 			isa = PBXGroup;
 			children = (
+				E3211AD728416DF1000A907F /* CustomUIElements */,
 				E3BCC1892836B6FC00634C4A /* DataManager */,
 				E32504B928357FC1005A61F8 /* URLConstructor */,
 				E3577ACD28342916001ABC07 /* DataModels */,
@@ -325,7 +326,6 @@
 		E3D14A34283C04D20039F702 /* AddPlaceModule */ = {
 			isa = PBXGroup;
 			children = (
-				E3211AD728416DF1000A907F /* CustomImage */,
 				E3D47870282AD6F500556070 /* Map */,
 				E3D14A35283C09120039F702 /* AddPlaceView.swift */,
 				E3D14A37283C09250039F702 /* AddPlaceViewModel.swift */,
@@ -498,7 +498,7 @@
 				E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */,
 				E3D14A3A283C09320039F702 /* AddPlaceModel.swift in Sources */,
 				E3A4A6B52828D30E00E865B4 /* RedactPlaceModel.swift in Sources */,
-				E3211AD928416E08000A907F /* CustomImage.swift in Sources */,
+				E3211AD928416E08000A907F /* ImagePicker.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */,
 				E3577ACF28342969001ABC07 /* User.swift in Sources */,
 				E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */,

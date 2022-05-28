@@ -43,7 +43,7 @@ final class DataManager: ObservableObject {
 
     func postUser(user: User, didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         var request = URLRequest(url: URLConstructor.default.newUserURL())
-                
+                        
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(user)
@@ -97,7 +97,7 @@ final class DataManager: ObservableObject {
                 return
             }
             
-            print("✅ place with id: \(String(describing: user.id)) authenticated.")
+            print("✅ user with id: \(String(describing: user.id)) authenticated.")
             
             didComplete()
             
@@ -112,14 +112,14 @@ final class DataManager: ObservableObject {
         newPlace.userID = self.userID ?? UUID()
         
         var request = URLRequest(url: URLConstructor.default.newPlaceURL())
-        
+                
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(newPlace)
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                print("❌ Error: \(error.localizedDescription)")
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error, let code = (response as? HTTPURLResponse)?.statusCode, code != 200 {
+                print("❌ Error: \(error.localizedDescription), status code equal: \(code)")
             } else {
                 print("✅ place with id: \(String(describing: place.name) ) posted.")
             }
@@ -130,20 +130,19 @@ final class DataManager: ObservableObject {
     func putPlace(place: Place) {
         var request = URLRequest(url: URLConstructor.default.putPlaceURL())
         
-        print(URLConstructor.default.putPlaceURL())
-        
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(place)
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                print("❌ Error: \(error.localizedDescription)")
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error, let code = (response as? HTTPURLResponse)?.statusCode, code != 200 {
+                print("❌ Error: \(error.localizedDescription), status code equal: \(code)")
             } else {
                 print("✅ place with id: \(String(describing: place.name) ) changed.")
             }
         }
         .resume()
+        
     }
     
     func deletePlace(placeID: UUID) {

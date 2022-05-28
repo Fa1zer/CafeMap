@@ -26,7 +26,7 @@ final class AddPlaceViewModel: ObservableObject, Coordinatable {
     
     var coordinator: NavigationCoordinator?
     @Published var coordinateRegion = MKCoordinateRegion()
-    @Published var place = Place(id: nil, name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
+    @Published var place = Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
     
     private var subribtions: Set<AnyCancellable> = []
     

@@ -58,8 +58,4 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         return self.coordinator?.goToMyPlaces() ?? MyPlacesView(viewModel: MyPlacesViewModel(model: MyPlacesModel(dataManager: DataManager())))
     }
     
-//    func signOut() -> Bool {
-//        return self.model.signOut()
-//    }
-    
 }

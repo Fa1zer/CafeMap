@@ -34,4 +34,8 @@ final class MyPlacesViewModel: ObservableObject, Coordinatable {
         return self.coordinator?.goToPlacesMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
+    func getAllPlaces() {
+        self.model.getAllPlaces()
+    }
+    
 }
