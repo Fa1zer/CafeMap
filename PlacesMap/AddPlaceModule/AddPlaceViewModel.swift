@@ -21,24 +21,12 @@ final class AddPlaceViewModel: ObservableObject, Coordinatable {
         self.model.$coordinateRegion
             .assign(to: \.coordinateRegion, on: self)
             .store(in: &self.subribtions)
-        self.$name
-            .assign(to: &self.model.$name)
-        self.$street
-            .assign(to: &self.model.$street)
-        self.$description
-            .assign(to: &self.model.$description)
-        self.$imageName
-            .assign(to: &self.model.$imageName)
+        
     }
     
     var coordinator: NavigationCoordinator?
     @Published var coordinateRegion = MKCoordinateRegion()
-    @Published var name = ""
-    @Published var street = ""
-    @Published var description = ""
-    @Published var imageName = ""
-    @Published var lat: Float = 0
-    @Published var lon: Float = 0
+    @Published var place = Place(id: nil, name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
     
     private var subribtions: Set<AnyCancellable> = []
     
@@ -47,15 +35,11 @@ final class AddPlaceViewModel: ObservableObject, Coordinatable {
     }
     
     func saveChanges() {
-        self.model.saveChanges()
+        self.model.saveChanges(place: self.place)
     }
     
-    func deletePlace() {
-        self.model.deletePlace()
-    }
-    
-    func goToMyPlaces() -> MyPlacesView {
-        return self.coordinator?.goToMyPlaces() ?? MyPlacesView(viewModel: MyPlacesViewModel(model: MyPlacesModel(dataManager: DataManager())))
+    func goToPlacesMap() -> PlacesMapView {
+        return self.coordinator?.goToPlacesMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
 }

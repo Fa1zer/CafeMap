@@ -27,6 +27,7 @@ struct PlacesMapView: View {
                         .resizable()
                         .frame(width: 20, height: 28)
                         .onTapGesture {
+                            self.viewModel.currentPlace = place
                             self.viewModel.image = UIImage(data: place.image ?? Data()) ?? UIImage()
                             self.viewModel.name = place.name
                             self.viewModel.street = place.street
@@ -38,37 +39,39 @@ struct PlacesMapView: View {
                 self.viewModel.getUserLocation()
             }
             
-            HStack(alignment: .center, spacing: 15) {
-                Image(uiImage: self.viewModel.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(.gray, lineWidth: 5))
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(self.viewModel.name)
-                        .font(.title)
-                        .foregroundColor(.black)
-                    
-                    Text(self.viewModel.street)
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                }
-                
-                Spacer()
-                
-                NavigationLink {
-                    self.viewModel.goToPlaceInformation()
-                } label: {
-                    Image(uiImage: UIImage(systemName: "info.circle") ?? UIImage())
+            if self.viewModel.name != "" {
+                HStack(alignment: .center, spacing: 15) {
+                    Image(uiImage: self.viewModel.image)
                         .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(.gray, lineWidth: 5))
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(self.viewModel.name)
+                            .font(.title)
+                            .foregroundColor(.black)
+                        
+                        Text(self.viewModel.street)
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        self.viewModel.goToPlaceInformation(place: self.viewModel.currentPlace)
+                    } label: {
+                        Image(uiImage: UIImage(systemName: "info.circle") ?? UIImage())
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                    }
                 }
+                .padding([.leading, .trailing], 20)
             }
-            .padding([.leading, .trailing], 20)
             
             NavigationLink("", destination: self.viewModel.goToRegistration(), isActive: self.$registrationIsPresented)
                 .onSubmit {
@@ -80,7 +83,7 @@ struct PlacesMapView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    self.registrationIsPresented = self.viewModel.signOut()
+                    self.registrationIsPresented = true//self.viewModel.signOut()
                 } label: {
                     Text(NSLocalizedString("Sign Out", comment: ""))
                 }

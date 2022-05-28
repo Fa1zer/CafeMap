@@ -32,7 +32,8 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
     @Published var image = UIImage(named: "logo") ?? UIImage()
     @Published var name = ""
     @Published var street = ""
-                
+    
+    var currentPlace = Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
     var anotations: [MKAnnotation] { return self.model.anotations }
     var coordinator: NavigationCoordinator?
     private var subribtions: Set<AnyCancellable> = []
@@ -45,8 +46,8 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         self.model.getAllPlaces()
     }
     
-    func goToPlaceInformation() -> PlaceInformationView {
-        return self.coordinator?.goToPlaceInformation() ?? PlaceInformationView(viewModel: PlaceInformationViewModel(model: PlaceInformationModel(dataManager: DataManager())))
+    func goToPlaceInformation(place: Place) -> PlaceInformationView {
+        return self.coordinator?.goToPlaceInformation(place: place) ?? PlaceInformationView(viewModel: PlaceInformationViewModel(model: PlaceInformationModel(place: place)))
     }
     
     func goToRegistration() -> RegistrationView {
@@ -57,8 +58,8 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
         return self.coordinator?.goToMyPlaces() ?? MyPlacesView(viewModel: MyPlacesViewModel(model: MyPlacesModel(dataManager: DataManager())))
     }
     
-    func signOut() -> Bool {
-        return self.model.signOut()
-    }
+//    func signOut() -> Bool {
+//        return self.model.signOut()
+//    }
     
 }

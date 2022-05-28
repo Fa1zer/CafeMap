@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Firebase
+//import Firebase
 
 @main
 struct CafeMapApp: App {
     
-    init() {
-        FirebaseApp.configure()
-    }
+//    init() {
+//        FirebaseApp.configure()
+//    }
     
     var body: some Scene {
         WindowGroup {

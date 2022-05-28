@@ -71,8 +71,8 @@ struct MyMapView: UIViewRepresentable {
                 
                 anotation.coordinate = touchCoordinates
                 
-                self.viewModel.lat = Float(touchCoordinates.latitude)
-                self.viewModel.lon = Float(touchCoordinates.longitude)
+                self.viewModel.place.lat = Float(touchCoordinates.latitude)
+                self.viewModel.place.lon = Float(touchCoordinates.longitude)
                 
                 self.mapView.addAnnotation(anotation)
             }

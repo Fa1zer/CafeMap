@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct User: Codable {
-    var id: String
+struct User: Identifiable, Codable {
+    var id: UUID?
+    var email: String
+    var password: String
+}
+
+struct HashUser: Identifiable, Codable {
+    var id: UUID?
+    var email: String
+    var passwordHash: String
 }

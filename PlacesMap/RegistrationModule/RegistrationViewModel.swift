@@ -22,7 +22,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
     @Published var email = ""
         
     func logIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
-        if password.count < 6 {
+        if password.count < 8 {
             didNotComplete(.passwordFieldIsSmall)
             
             return
@@ -37,7 +37,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
     }
     
     func signIn(didComplete: @escaping () -> Void, didNotComplete: @escaping (SignInErrors) -> Void) {
-        if password.count < 6 {
+        if password.count < 8 {
             didNotComplete(.passwordFieldIsSmall)
             
             return
@@ -52,7 +52,7 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
     }
     
     func goToCafeMap() -> PlacesMapView {
-        return self.coordinator?.goToCafeMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
+        return self.coordinator?.goToPlacesMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }
     
 }

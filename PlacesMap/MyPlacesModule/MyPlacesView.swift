@@ -18,7 +18,7 @@ struct MyPlacesView: View {
     var body: some View {
         List(self.$viewModel.places) { place in
             HStack(alignment: .center, spacing: 15) {
-                Image(uiImage: UIImage(data: place.image.wrappedValue ?? Data()) ?? UIImage())
+                Image(uiImage: UIImage(data: place.image.wrappedValue ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
@@ -37,7 +37,7 @@ struct MyPlacesView: View {
                 
                 Spacer()
                 
-                NavigationLink("", destination: self.viewModel.goToRedactPlace())
+                NavigationLink("", destination: self.viewModel.goToRedactPlace(place: place.wrappedValue))
             }
             .padding()
         }

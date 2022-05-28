@@ -9,10 +9,10 @@ import Foundation
 
 final class PlaceInformationModel {
     
-    private let dataManager: DataManager
+    let place: Place
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
+    init(place: Place) {
+        self.place = place
     }
     
 }

@@ -9,13 +9,13 @@ import Foundation
 
 struct Place: Codable, Identifiable {
     
-    let id: String
+    let id: UUID?
     var name: String
     var street: String
     var placeDescription: String
     var lat: Float
     var lon: Float
     var image: Data?
-    var user: User
+    var userID: UUID
     
 }

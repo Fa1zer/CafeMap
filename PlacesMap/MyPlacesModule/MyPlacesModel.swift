@@ -7,15 +7,22 @@
 
 import Foundation
 import UIKit
+import Combine
+import SwiftUI
 
 final class MyPlacesModel: ObservableObject {
     
-    private let dataManager: DataManager
+    @ObservedObject private var dataManager: DataManager
+    private var subscriptions = Set<AnyCancellable>()
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
+        
+        self.dataManager.getAllUserPlaces()
+            .assign(to: \.places, on: self)
+            .store(in: &self.subscriptions)
     }
     
-    @Published var places = [Place(id: "\(UUID())", name: "1", street: "1", placeDescription: "1", lat: 1, lon: 1, image: UIImage(named: "logo")?.pngData(), user: User(id: "\(UUID())"))]
+    @Published var places = [Place]()
     
 }

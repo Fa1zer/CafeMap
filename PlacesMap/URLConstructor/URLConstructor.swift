@@ -16,7 +16,7 @@ final class URLConstructor {
     }
     
     private init() {
-        self.baseURL = "http://127.0.0.1:8080"
+        self.baseURL = "http://127.0.0.1:8080/"
     }
     
     static let `default` = URLConstructor()
@@ -24,6 +24,12 @@ final class URLConstructor {
     func allUsersURL() -> URL {
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.users.rawValue) ?? URL(fileURLWithPath: "")
+    }
+    
+    func newUserURL() -> URL {
+        return URL(string: self.baseURL)?
+            .appendingPathComponent(URLPaths.users.rawValue)
+            .appendingPathComponent(URLPaths.new.rawValue) ?? URL(fileURLWithPath: "")
     }
     
     func userURL(userID: UUID?) -> URL {
@@ -36,10 +42,17 @@ final class URLConstructor {
             .appendingPathComponent(userID.uuidString) ?? URL(fileURLWithPath: "")
     }
     
+    func authUser() -> URL {
+        return URL(string: self.baseURL)?
+            .appendingPathComponent(URLPaths.user.rawValue)
+            .appendingPathComponent(URLPaths.auth.rawValue) ?? URL(fileURLWithPath: "")
+    }
+    
     func allUserPlacesURL(userID: UUID?) -> URL {
         guard let userID = userID else {
             return URL(fileURLWithPath: "")
         }
+
         
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.users.rawValue)
@@ -50,6 +63,18 @@ final class URLConstructor {
     func allPlacesURL() -> URL {
         return URL(string: self.baseURL)?
             .appendingPathComponent(URLPaths.places.rawValue) ?? URL(fileURLWithPath: "")
+    }
+    
+    func putPlaceURL() -> URL {
+        return URL(string: self.baseURL)?
+            .appendingPathComponent(URLPaths.places.rawValue)
+            .appendingPathComponent(URLPaths.redact.rawValue) ?? URL(fileURLWithPath: "")
+    }
+    
+    func newPlaceURL() -> URL {
+        return URL(string: self.baseURL)?
+            .appendingPathComponent(URLPaths.places.rawValue)
+            .appendingPathComponent(URLPaths.new.rawValue) ?? URL(fileURLWithPath: "")
     }
     
     func placeURL(placeID: UUID?) -> URL {
@@ -74,7 +99,7 @@ final class URLConstructor {
     }
     
     private enum URLPaths: String {
-        case users, places, user
+        case users, places, user, new, auth, redact
     }
     
 }
