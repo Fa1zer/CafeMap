@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 final class RedactPlaceViewModel: ObservableObject, Coordinatable {
     
@@ -21,6 +23,8 @@ final class RedactPlaceViewModel: ObservableObject, Coordinatable {
     var coordinator: NavigationCoordinator?
     
     @Published var place = Place(id: UUID(), name: "", street: "", placeDescription: "", lat: 0, lon: 0, userID: UUID())
+    
+    private var subribtions = Set<AnyCancellable>()
         
     func saveChanges() {
         self.model.saveChanges(place: self.place)

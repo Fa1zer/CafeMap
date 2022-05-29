@@ -51,9 +51,6 @@ struct MyPlacesView: View {
                 }
             }
         }
-        .onAppear() {
-            self.viewModel.getAllPlaces()
-        }
     }
     
 }

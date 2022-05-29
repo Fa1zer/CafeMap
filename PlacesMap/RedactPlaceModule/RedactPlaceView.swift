@@ -10,12 +10,13 @@ import SwiftUI
 struct RedactPlaceView: View {
     
     @ObservedObject private var viewModel: RedactPlaceViewModel
-    @State private var myPlacesIsSelected = false
-    @State private var showSheet = false
     
     init(viewModel: RedactPlaceViewModel) {
         self.viewModel = viewModel
     }
+    
+    @State var myPlacesIsSelected = false
+    @State private var showSheet = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -90,9 +91,6 @@ struct RedactPlaceView: View {
                 
                 NavigationLink("", destination: self.viewModel.goToPlacesMap(), isActive: self.$myPlacesIsSelected)
                     .hidden()
-                    .onSubmit {
-                        self.myPlacesIsSelected = false
-                    }
             }
             .padding()
         }

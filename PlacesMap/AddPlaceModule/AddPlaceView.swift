@@ -15,8 +15,8 @@ struct AddPlaceView: View {
         self.viewModel = viewModel
     }
     
-    @State private var myPlacesIsSelected = false
     @State private var showSheet = false
+    @State var myPlacesIsSelected = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {

@@ -21,7 +21,6 @@ final class AddPlaceViewModel: ObservableObject, Coordinatable {
         self.model.$coordinateRegion
             .assign(to: \.coordinateRegion, on: self)
             .store(in: &self.subribtions)
-        
     }
     
     var coordinator: NavigationCoordinator?

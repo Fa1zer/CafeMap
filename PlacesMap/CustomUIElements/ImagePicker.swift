@@ -41,9 +41,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                print(image.pngData() as Any)
-                
+            if let image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) {                
                 parent.selectedImage = image.pngData()?.base64EncodedString()
             }
             
@@ -51,4 +49,5 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
 
     }
+    
 }

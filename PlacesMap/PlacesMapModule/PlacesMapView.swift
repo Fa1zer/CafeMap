@@ -83,7 +83,7 @@ struct PlacesMapView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    self.registrationIsPresented = true//self.viewModel.signOut()
+                    self.registrationIsPresented = true
                 } label: {
                     Text(NSLocalizedString("Sign Out", comment: ""))
                 }
@@ -93,9 +93,6 @@ struct PlacesMapView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink("My places", destination: self.viewModel.goToMyPlaces())
             }
-        }
-        .onAppear() {
-            self.viewModel.getAllPlaces()
         }
     }
     
