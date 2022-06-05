@@ -28,7 +28,7 @@ struct PlacesMapView: View {
                         .frame(width: 20, height: 28)
                         .onTapGesture {
                             self.viewModel.currentPlace = place
-                            self.viewModel.image = UIImage(data: place.image ?? Data()) ?? UIImage()
+                            self.viewModel.image = UIImage(data: Data(base64Encoded: place.image ?? "") ?? Data()) ?? UIImage()
                             self.viewModel.name = place.name
                             self.viewModel.street = place.street
                         }
@@ -83,7 +83,7 @@ struct PlacesMapView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    self.registrationIsPresented = true//self.viewModel.signOut()
+                    self.registrationIsPresented = true
                 } label: {
                     Text(NSLocalizedString("Sign Out", comment: ""))
                 }

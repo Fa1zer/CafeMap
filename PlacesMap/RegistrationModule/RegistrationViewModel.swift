@@ -51,6 +51,10 @@ final class RegistrationViewModel: ObservableObject, Coordinatable {
         )
     }
     
+    func keychainSignIn(didComplete: @escaping () -> Void) {
+        self.model.keychainSignIn(didComplete: didComplete)
+    }
+    
     func goToCafeMap() -> PlacesMapView {
         return self.coordinator?.goToPlacesMap() ?? PlacesMapView(viewModel: PlacesMapViewModel(model: PlacesMapModel(dataManager: DataManager(), locationManager: LocationManager.shared)))
     }

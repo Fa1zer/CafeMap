@@ -25,7 +25,9 @@ final class PlacesMapModel: ObservableObject {
             .assign(to: \.coordinateRegion, on: self)
             .store(in: &self.subscriptions)
         
-        self.getAllPlaces()
+        self.dataManager.$allPlaces
+            .assign(to: \.places, on: self)
+            .store(in: &self.subscriptions)
     }
     
     @Published var coordinateRegion = MKCoordinateRegion()
@@ -50,9 +52,6 @@ final class PlacesMapModel: ObservableObject {
     
     func getAllPlaces() {
         self.dataManager.getAllPlaces()
-            .receive(on: RunLoop.main)
-            .assign(to: \.places, on: self)
-            .store(in: &self.subscriptions)
     }
     
     func getUserLocation() {

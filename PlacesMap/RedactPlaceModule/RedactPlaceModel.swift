@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class RedactPlaceModel: ObservableObject {
     
@@ -16,7 +17,7 @@ final class RedactPlaceModel: ObservableObject {
         self.dataManager = dataManager
         self.place = place
     }
-    
+        
     func saveChanges(place: Place) {
         self.dataManager.putPlace(place: place)
     }

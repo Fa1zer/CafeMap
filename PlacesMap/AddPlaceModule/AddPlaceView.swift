@@ -15,16 +15,21 @@ struct AddPlaceView: View {
         self.viewModel = viewModel
     }
     
-    @State private var myPlacesIsSelected = false
+    @State private var showSheet = false
+    @State var myPlacesIsSelected = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(alignment: .center, spacing: 15) {
                 HStack(spacing: 15) {
-                    CustomImage(viewModel: self.viewModel)
+                    Image(uiImage: UIImage(data: Data(base64Encoded: self.viewModel.place.image ?? "") ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()))
+                        .resizable()
                         .frame(width: 115, height: 115)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(.gray, lineWidth: 5))
+                        .onTapGesture {
+                            self.showSheet = true
+                        }
                     
                     VStack(alignment: .center, spacing: 15) {
                         TextField(NSLocalizedString("Name", comment: ""), text: self.$viewModel.place.name)
@@ -96,6 +101,9 @@ struct AddPlaceView: View {
                 .hidden()
         }
         .navigationBarTitle(NSLocalizedString("Redact", comment: ""))
+        .sheet(isPresented: self.$showSheet) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.place.image)
+        }
     }
     
 }

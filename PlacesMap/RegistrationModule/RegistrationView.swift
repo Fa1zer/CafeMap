@@ -113,13 +113,18 @@ struct RegistrationView: View {
                     .onSubmit {
                         self.cafeMapViewIsPresented = false
                     }
-                        .hidden()
+                    .hidden()
                 }
                 .frame(height: 700)
             }
             .navigationBarHidden(true)
         }
         .navigationBarHidden(true)
+        .onAppear() {
+            self.viewModel.keychainSignIn {
+                self.cafeMapViewIsPresented = true
+            }
+        }
     }
     
 }

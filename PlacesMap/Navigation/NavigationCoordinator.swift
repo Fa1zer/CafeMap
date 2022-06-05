@@ -15,9 +15,15 @@ final class NavigationCoordinator {
     
     private let dataManager = DataManager()
     private let locationManager = LocationManager.shared
+    private let keychainManager = KeychainManager()
     
     func start() -> RegistrationView {
-        return self.goToRegistration()
+        let viewModel = RegistrationViewModel(model: RegistrationModel(dataManager: self.dataManager, keychainManager: self.keychainManager))
+        let view = RegistrationView(viewModel: viewModel)
+        
+        viewModel.coordinator = self
+        
+        return view
     }
     
     func goToPlacesMap() -> PlacesMapView {

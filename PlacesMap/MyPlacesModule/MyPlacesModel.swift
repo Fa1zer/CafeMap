@@ -18,11 +18,15 @@ final class MyPlacesModel: ObservableObject {
     init(dataManager: DataManager) {
         self.dataManager = dataManager
         
-        self.dataManager.getAllUserPlaces()
+        self.dataManager.$allUserPlaces
             .assign(to: \.places, on: self)
             .store(in: &self.subscriptions)
     }
     
     @Published var places = [Place]()
+    
+    func getAllPlaces() {
+        self.dataManager.getAllUserPlaces()
+    }
     
 }

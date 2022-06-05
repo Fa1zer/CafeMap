@@ -7,14 +7,15 @@
 
 import Foundation
 import Combine
-//import FirebaseAuth
 
 final class RegistrationModel {
     
     private let dataManager: DataManager
+    private let keychainManager: KeychainManager?
     
-    init(dataManager: DataManager) {
+    init(dataManager: DataManager, keychainManager: KeychainManager? = nil) {
         self.dataManager = dataManager
+        self.keychainManager = keychainManager
     }
     
     func logIn(email: String, passsword: String, didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
@@ -25,36 +26,22 @@ final class RegistrationModel {
             },
             didNotComplete: didNotComplete
         )
-        
-//        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: passsword) { result, error in
-//            if let error = error {
-//                didNotComplete(.someError)
-//
-//                print("❌ Error: \(error.localizedDescription)")
-//
-//                return
-//            }
-//
-//            self.dataManager.postUser(user: User(email: email, password: passsword))
-//
-//            didComplete()
-//        }
     }
     
     func signIn(email: String, passsword: String, didComplete: @escaping () -> Void, didNotComplete: @escaping (SignInErrors) -> Void) {
-        self.dataManager.authUser(user: User(email: email, password: passsword), didComplete: didComplete, didNotComplete: didNotComplete)
+        let newDidComplete = {
+            didComplete()
+            
+            self.keychainManager?.setEmailAndPassword(email: email, password: passsword)
+        }
         
-//        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: passsword) { _, error in
-//            if let error = error {
-//                didNotComplete(.someError)
-//
-//                print("❌ Error: \(error.localizedDescription)")
-//
-//                return
-//            }
-//
-//            didComplete()
-//        }
+        self.dataManager.authUser(user: User(email: email, password: passsword), didComplete: newDidComplete, didNotComplete: didNotComplete)
+    }
+    
+    func keychainSignIn(didComplete: @escaping () -> Void) {
+        guard let (email, password) = self.keychainManager?.getEmailAndPassword() else { return }
+        
+        self.dataManager.authUser(user: User(email: email, password: password), didComplete: didComplete, didNotComplete: { _ in })
     }
     
 }

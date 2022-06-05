@@ -18,7 +18,7 @@ struct MyPlacesView: View {
     var body: some View {
         List(self.$viewModel.places) { place in
             HStack(alignment: .center, spacing: 15) {
-                Image(uiImage: UIImage(data: place.image.wrappedValue ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()))
+                Image(uiImage: UIImage(data: Data(base64Encoded: place.image.wrappedValue ?? "") ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)

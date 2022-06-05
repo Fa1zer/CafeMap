@@ -20,6 +20,6 @@ final class PlaceInformationViewModel: ObservableObject, Coordinatable {
     var name: String { self.model.place.name }
     var street: String { self.model.place.street }
     var description: String { self.model.place.placeDescription }
-    var image: UIImage { UIImage(data: self.model.place.image ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()) }
+    var image: UIImage { UIImage(data: Data(base64Encoded: self.model.place.image ?? "") ?? Data()) ?? (UIImage(named: "empty") ?? UIImage()) }
     
 }

@@ -11,12 +11,14 @@
 		E3177EBD282452D2009D4BEE /* PlacesMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */; };
 		E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */; };
 		E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */; };
-		E3211AD928416E08000A907F /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3211AD828416E07000A907F /* CustomImage.swift */; };
+		E3211AD928416E08000A907F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3211AD828416E07000A907F /* ImagePicker.swift */; };
 		E32504BB28357FE3005A61F8 /* URLConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32504BA28357FE3005A61F8 /* URLConstructor.swift */; };
 		E3577ACF28342969001ABC07 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3577ACE28342969001ABC07 /* User.swift */; };
 		E3577AD1283429B0001ABC07 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3577AD0283429B0001ABC07 /* Place.swift */; };
 		E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E42822CF1B00A14C82 /* RegistrationViewModel.swift */; };
 		E36355E72822CF2700A14C82 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36355E62822CF2700A14C82 /* RegistrationModel.swift */; };
+		E36445652843DB6F008AC572 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E36445642843DB6F008AC572 /* KeychainAccess */; };
+		E36445682843DBC5008AC572 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36445672843DBC5008AC572 /* KeychainManager.swift */; };
 		E375CC0E282408E100186418 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E375CC10282408E100186418 /* Localizable.strings */; };
 		E375CC1528240D4300186418 /* RegistrationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E375CC1428240D4300186418 /* RegistrationErrors.swift */; };
 		E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5628227934005E14A7 /* CafeMapApp.swift */; };
@@ -70,12 +72,13 @@
 		E3177EBC282452D2009D4BEE /* PlacesMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapViewModel.swift; sourceTree = "<group>"; };
 		E3177EBE282452E1009D4BEE /* PlacesMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapModel.swift; sourceTree = "<group>"; };
 		E31BCFBC28252AED00340CF5 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
-		E3211AD828416E07000A907F /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
+		E3211AD828416E07000A907F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E32504BA28357FE3005A61F8 /* URLConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstructor.swift; sourceTree = "<group>"; };
 		E3577ACE28342969001ABC07 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3577AD0283429B0001ABC07 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		E36355E42822CF1B00A14C82 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E36355E62822CF2700A14C82 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		E36445672843DBC5008AC572 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		E375CC0F282408E100186418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E375CC11282408F700186418 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E375CC1428240D4300186418 /* RegistrationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationErrors.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36445652843DB6F008AC572 /* KeychainAccess in Frameworks */,
 				E38F0F8528228028005E14A7 /* FirebaseAnalytics in Frameworks */,
 				E38F0F8928228029005E14A7 /* FirebaseAuthCombine-Community in Frameworks */,
 				E38F0F8728228029005E14A7 /* FirebaseAuth in Frameworks */,
@@ -155,12 +159,12 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		E3211AD728416DF1000A907F /* CustomImage */ = {
+		E3211AD728416DF1000A907F /* CustomUIElements */ = {
 			isa = PBXGroup;
 			children = (
-				E3211AD828416E07000A907F /* CustomImage.swift */,
+				E3211AD828416E07000A907F /* ImagePicker.swift */,
 			);
-			path = CustomImage;
+			path = CustomUIElements;
 			sourceTree = "<group>";
 		};
 		E32504B928357FC1005A61F8 /* URLConstructor */ = {
@@ -189,6 +193,14 @@
 				E375CC1428240D4300186418 /* RegistrationErrors.swift */,
 			);
 			path = RegistrationModule;
+			sourceTree = "<group>";
+		};
+		E36445662843DBA3008AC572 /* KeychainManager */ = {
+			isa = PBXGroup;
+			children = (
+				E36445672843DBC5008AC572 /* KeychainManager.swift */,
+			);
+			path = KeychainManager;
 			sourceTree = "<group>";
 		};
 		E375CC0B2824088100186418 /* Localization */ = {
@@ -223,6 +235,8 @@
 		E38F0F5528227934005E14A7 /* PlacesMap */ = {
 			isa = PBXGroup;
 			children = (
+				E36445662843DBA3008AC572 /* KeychainManager */,
+				E3211AD728416DF1000A907F /* CustomUIElements */,
 				E3BCC1892836B6FC00634C4A /* DataManager */,
 				E32504B928357FC1005A61F8 /* URLConstructor */,
 				E3577ACD28342916001ABC07 /* DataModels */,
@@ -325,7 +339,6 @@
 		E3D14A34283C04D20039F702 /* AddPlaceModule */ = {
 			isa = PBXGroup;
 			children = (
-				E3211AD728416DF1000A907F /* CustomImage */,
 				E3D47870282AD6F500556070 /* Map */,
 				E3D14A35283C09120039F702 /* AddPlaceView.swift */,
 				E3D14A37283C09250039F702 /* AddPlaceViewModel.swift */,
@@ -362,6 +375,7 @@
 				E38F0F8428228028005E14A7 /* FirebaseAnalytics */,
 				E38F0F8628228029005E14A7 /* FirebaseAuth */,
 				E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */,
+				E36445642843DB6F008AC572 /* KeychainAccess */,
 			);
 			productName = CafeMap;
 			productReference = E38F0F5328227934005E14A7 /* Places Map.app */;
@@ -438,6 +452,7 @@
 			mainGroup = E38F0F4A28227933005E14A7;
 			packageReferences = (
 				E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E36445632843DB6E008AC572 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = E38F0F5428227934005E14A7 /* Products */;
 			projectDirPath = "";
@@ -498,8 +513,9 @@
 				E3BD434928253A2600B9E1A3 /* LocationManager.swift in Sources */,
 				E3D14A3A283C09320039F702 /* AddPlaceModel.swift in Sources */,
 				E3A4A6B52828D30E00E865B4 /* RedactPlaceModel.swift in Sources */,
-				E3211AD928416E08000A907F /* CustomImage.swift in Sources */,
+				E3211AD928416E08000A907F /* ImagePicker.swift in Sources */,
 				E36355E52822CF1B00A14C82 /* RegistrationViewModel.swift in Sources */,
+				E36445682843DBC5008AC572 /* KeychainManager.swift in Sources */,
 				E3577ACF28342969001ABC07 /* User.swift in Sources */,
 				E3177EBF282452E1009D4BEE /* PlacesMapModel.swift in Sources */,
 				E31BCFBD28252AED00340CF5 /* NavigationCoordinator.swift in Sources */,
@@ -861,6 +877,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E36445632843DB6E008AC572 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -872,6 +896,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E36445642843DB6F008AC572 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E36445632843DB6E008AC572 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		E38F0F8428228028005E14A7 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

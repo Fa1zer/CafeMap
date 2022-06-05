@@ -7,28 +7,26 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class DataManager: ObservableObject {
     
-    private let urlConstructor = URLConstructor.default
-    private var userID: UUID?
-        
-    func getAllPlaces() -> AnyPublisher<[Place], Never> {
-        return URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allPlacesURL())
-            .tryMap { element -> Data in
-                guard let httpResponse = element.response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
-                
-                return element.data
-            }
-            .decode(type: [Place].self, decoder: JSONDecoder())
-            .replaceError(with: [Place]())
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+    init() {
+        self.getAllPlaces()
     }
     
-    func getAllUserPlaces() -> AnyPublisher<[Place], Never> {
-        return URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allUserPlacesURL(userID: self.userID))
+    private let urlConstructor = URLConstructor.default
+    private var userID: UUID? {
+        didSet {
+            self.getAllUserPlaces()
+        }
+    }
+    
+    @Published var allPlaces = [Place]()
+    @Published var allUserPlaces = [Place]()
+        
+    func getAllPlaces() {
+        URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allPlacesURL())
             .tryMap { element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
@@ -38,12 +36,26 @@ final class DataManager: ObservableObject {
             .decode(type: [Place].self, decoder: JSONDecoder())
             .replaceError(with: [Place]())
             .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+            .assign(to: &self.$allPlaces)
+    }
+    
+    func getAllUserPlaces() {
+        URLSession.shared.dataTaskPublisher(for: self.urlConstructor.allUserPlacesURL(userID: self.userID))
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else { throw URLError(.badServerResponse) }
+                
+                return element.data
+            }
+            .decode(type: [Place].self, decoder: JSONDecoder())
+            .replaceError(with: [Place]())
+            .receive(on: RunLoop.main)
+            .assign(to: &self.$allUserPlaces)
     }
 
     func postUser(user: User, didComplete: @escaping () -> Void, didNotComplete: @escaping (LogInErrors) -> Void) {
         var request = URLRequest(url: URLConstructor.default.newUserURL())
-                
+                        
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(user)
@@ -97,7 +109,7 @@ final class DataManager: ObservableObject {
                 return
             }
             
-            print("✅ place with id: \(String(describing: user.id)) authenticated.")
+            print("✅ user with id: \(String(describing: user.id)) authenticated.")
             
             didComplete()
             
@@ -112,16 +124,19 @@ final class DataManager: ObservableObject {
         newPlace.userID = self.userID ?? UUID()
         
         var request = URLRequest(url: URLConstructor.default.newPlaceURL())
-        
+                
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(newPlace)
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                print("❌ Error: \(error.localizedDescription)")
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error, let code = (response as? HTTPURLResponse)?.statusCode, code != 200 {
+                print("❌ Error: \(error.localizedDescription), status code equal: \(code)")
             } else {
                 print("✅ place with id: \(String(describing: place.name) ) posted.")
+                
+                self.allPlaces.append(place)
+                self.allUserPlaces.append(place)
             }
         }
         .resume()
@@ -130,20 +145,35 @@ final class DataManager: ObservableObject {
     func putPlace(place: Place) {
         var request = URLRequest(url: URLConstructor.default.putPlaceURL())
         
-        print(URLConstructor.default.putPlaceURL())
-        
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(place)
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                print("❌ Error: \(error.localizedDescription)")
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error, let code = (response as? HTTPURLResponse)?.statusCode, code != 200 {
+                print("❌ Error: \(error.localizedDescription), status code equal: \(code)")
             } else {
                 print("✅ place with id: \(String(describing: place.name) ) changed.")
+                
+                for i in 0 ..< self.allPlaces.count {
+                    if place.id == self.allPlaces[i].id {
+                        DispatchQueue.main.async {
+                            self.allPlaces[i] = place
+                        }
+                    }
+                }
+                
+                for i in 0 ..< self.allUserPlaces.count {
+                    if place.id == self.allUserPlaces[i].id {
+                        DispatchQueue.main.async {
+                            self.allUserPlaces[i] = place
+                        }
+                    }
+                }
             }
         }
         .resume()
+        
     }
     
     func deletePlace(placeID: UUID) {
@@ -156,6 +186,18 @@ final class DataManager: ObservableObject {
                 print("❌ Error: \(error.localizedDescription)")
             } else {
                 print("✅ place with id: \(placeID) deleted.")
+                
+                for i in 0 ..< self.allPlaces.count {
+                    if self.allPlaces[i].id == placeID {
+                        self.allPlaces.remove(at: i)
+                    }
+                }
+                
+                for i in 0 ..< self.allUserPlaces.count {
+                    if self.allUserPlaces[i].id == placeID {
+                        self.allUserPlaces.remove(at: i)
+                    }
+                }
             }
         }
         .resume()
