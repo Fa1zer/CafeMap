@@ -93,9 +93,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36445652843DB6F008AC572 /* KeychainAccess in Frameworks */,
-				E38F0F8528228028005E14A7 /* FirebaseAnalytics in Frameworks */,
-				E38F0F8928228029005E14A7 /* FirebaseAuthCombine-Community in Frameworks */,
-				E38F0F8728228029005E14A7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,9 +309,6 @@
 			);
 			name = PlacesMap;
 			packageProductDependencies = (
-				E38F0F8428228028005E14A7 /* FirebaseAnalytics */,
-				E38F0F8628228029005E14A7 /* FirebaseAuth */,
-				E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */,
 				E36445642843DB6F008AC572 /* KeychainAccess */,
 			);
 			productName = CafeMap;
@@ -347,7 +341,6 @@
 			);
 			mainGroup = E38F0F4A28227933005E14A7;
 			packageReferences = (
-				E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E36445632843DB6E008AC572 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = E38F0F5428227934005E14A7 /* Products */;
@@ -645,14 +638,6 @@
 				kind = branch;
 			};
 		};
-		E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -660,21 +645,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E36445632843DB6E008AC572 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		E38F0F8428228028005E14A7 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		E38F0F8628228029005E14A7 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		E38F0F8828228029005E14A7 /* FirebaseAuthCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E38F0F8328228028005E14A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAuthCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

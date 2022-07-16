@@ -9,7 +9,6 @@ import Foundation
 import CoreLocation
 import Combine
 import MapKit
-import Firebase
 import SwiftUI
 
 final class PlacesMapModel: ObservableObject {
