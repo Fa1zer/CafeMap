@@ -16,7 +16,7 @@ final class URLConstructor {
     }
     
     private init() {
-        self.baseURL = "http://127.0.0.1:8080/"
+        self.baseURL = "https://aplace-serve.herokuapp.com/"
     }
     
     static let `default` = URLConstructor()
