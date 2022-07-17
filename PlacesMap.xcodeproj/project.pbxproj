@@ -22,6 +22,7 @@
 		E36445682843DBC5008AC572 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36445672843DBC5008AC572 /* KeychainManager.swift */; };
 		E375CC0E282408E100186418 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E375CC10282408E100186418 /* Localizable.strings */; };
 		E375CC1528240D4300186418 /* RegistrationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E375CC1428240D4300186418 /* RegistrationErrors.swift */; };
+		E379B1902884965900B1C199 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E379B1922884965900B1C199 /* Launch Screen.storyboard */; };
 		E38F0F5728227934005E14A7 /* CafeMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5628227934005E14A7 /* CafeMapApp.swift */; };
 		E38F0F5928227934005E14A7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F0F5828227934005E14A7 /* RegistrationView.swift */; };
 		E38F0F5B28227939005E14A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38F0F5A28227939005E14A7 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		E375CC0F282408E100186418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E375CC11282408F700186418 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E375CC1428240D4300186418 /* RegistrationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationErrors.swift; sourceTree = "<group>"; };
+		E379B1912884965900B1C199 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = "en.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E38F0F5328227934005E14A7 /* Places Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Places Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38F0F5628227934005E14A7 /* CafeMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapApp.swift; sourceTree = "<group>"; };
 		E38F0F5828227934005E14A7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				E33B28622883257300F227DA /* GoogleService-Info.plist */,
 				E38F0F5628227934005E14A7 /* CafeMapApp.swift */,
 				E38F0F5A28227939005E14A7 /* Assets.xcassets */,
+				E379B1922884965900B1C199 /* Launch Screen.storyboard */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E379B1902884965900B1C199 /* Launch Screen.storyboard in Resources */,
 				E38F0F5E28227939005E14A7 /* Preview Assets.xcassets in Resources */,
 				E375CC0E282408E100186418 /* Localizable.strings in Resources */,
 				E33B28632883257300F227DA /* GoogleService-Info.plist in Resources */,
@@ -421,6 +425,14 @@
 				E375CC11282408F700186418 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E379B1922884965900B1C199 /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E379B1912884965900B1C199 /* en */,
+			);
+			name = "Launch Screen.storyboard";
 			sourceTree = "<group>";
 		};
 		E3C485282826F89400E53D51 /* InfoPlist.strings */ = {
@@ -561,11 +573,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlacesMap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = PlacesMap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = APlace;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -592,11 +605,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlacesMap/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = PlacesMap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = APlace;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;

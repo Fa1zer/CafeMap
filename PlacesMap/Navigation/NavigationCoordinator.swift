@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol Coordinatable {
     var coordinator: NavigationCoordinator? { get set }
@@ -13,17 +14,27 @@ protocol Coordinatable {
 
 final class NavigationCoordinator {
     
+    init() {
+        if let(email, password) = self.keychainManager.getEmailAndPassword() {
+            self.dataManager.authUser(user: User(email: email, password: password), didComplete: { }, didNotComplete: { _ in })
+        }
+    }
+    
     private let dataManager = DataManager()
     private let locationManager = LocationManager.shared
     private let keychainManager = KeychainManager()
     
-    func start() -> RegistrationView {
-        let viewModel = RegistrationViewModel(model: RegistrationModel(dataManager: self.dataManager, keychainManager: self.keychainManager))
-        let view = RegistrationView(viewModel: viewModel)
+    func start() -> some View {
+        guard self.dataManager.userID != nil else {
+            let viewModel = RegistrationViewModel(model: RegistrationModel(dataManager: self.dataManager, keychainManager: self.keychainManager))
+            let view = RegistrationView(viewModel: viewModel)
+            
+            viewModel.coordinator = self
+            
+            return AnyView(view)
+        }
         
-        viewModel.coordinator = self
-        
-        return view
+        return AnyView(self.goToPlacesMap())
     }
     
     func goToPlacesMap() -> PlacesMapView {
