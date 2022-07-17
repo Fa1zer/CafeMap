@@ -16,7 +16,7 @@ final class DataManager: ObservableObject {
     }
     
     private let urlConstructor = URLConstructor.default
-    private var userID: UUID? {
+    var userID: UUID? {
         didSet {
             self.getAllUserPlaces()
         }
