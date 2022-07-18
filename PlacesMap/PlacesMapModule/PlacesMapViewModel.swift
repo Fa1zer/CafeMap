@@ -29,7 +29,7 @@ final class PlacesMapViewModel: ObservableObject, Coordinatable {
     
     @Published var coordinateRegion = MKCoordinateRegion()
     @Published var places = [Place]()
-    @Published var image = UIImage(named: "logo") ?? UIImage()
+    @Published var image = UIImage(named: "empty") ?? UIImage()
     @Published var name = ""
     @Published var street = ""
     
